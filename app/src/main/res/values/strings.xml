@@ -1,0 +1,28 @@
+<resources>
+    <string name="facebook_app_id">2124111651080034</string>
+    <string name="fb_login_protocol_scheme">fb2124111651080034</string>
+
+
+    <string name="app_name">forfoodiesbyfoodies</string>
+    <string name="logo_app">Logo</string>
+    <string name="main_bg">Background</string>
+    <string name="main_wc_txt">Welcome</string>
+    <string name="welcome">For Foodies By Foodies</string>
+    <string name="log_in">LOG IN</string>
+    <string name="register">Register</string>
+    <string name="email">E-mail Address</string>
+    <string name="fn">First Name</string>
+    <string name="sn">Last Name</string>
+    <string name="pw">******</string>
+    <string name="forgot_pw">Forgot Password ?</string>
+    <string name="log_google">Google</string>
+    <string name="log_facebook">Facebook</string>
+    <string name="dont_have_an_account">Do not have an Account?</string>
+    <string name="sign_up">Create new Account ?</string>
+    <string name="already_have_an_account">Already Have an Account ?</string>
+    <string name="reset_link">Send Reset Link</string>
+    <string name="back_fw">Back to</string>
+    <string name="fw_log">Log In</string>
+    <string name="main_log_out">Log Out</string>
+
+</resources>
