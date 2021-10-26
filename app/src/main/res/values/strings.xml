@@ -26,5 +26,10 @@
     <string name="main_log_out">Log Out</string>
     <string name="emailaddress"><u>Email address</u></string>
     <string name="passwordprof"><u>Password</u></string>
+    <string name="profilepicture">Profile Picture</string>
+    <string name="change_email">Change Email</string>
+    <string name="change_password">Change Password</string>
+    <string name="marian">Marian</string>
+    <string name="bruma">Bruma</string>
 
 </resources>

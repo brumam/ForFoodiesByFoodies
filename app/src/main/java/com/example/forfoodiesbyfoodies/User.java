@@ -2,7 +2,9 @@ package com.example.forfoodiesbyfoodies;
 
 public class User {
     private String email, password,firstName,lastName;
+
     public User() {
+
     }
 
 

@@ -8,8 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="394dp"
-        android:layout_height="254dp"
+        android:layout_width="391dp"
+        android:layout_height="257dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,14 +23,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="113dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="117dp"
             android:text="@string/main_wc_txt"
             android:textColor="@color/white"
             android:textSize="40sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/user_imageview" />
 
@@ -42,7 +42,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="132dp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Bruma"
+            android:text="@string/bruma"
             android:textAlignment="textEnd"
             android:textColor="@color/colorPrimary"
             android:textSize="34sp"
@@ -57,7 +57,7 @@
             android:layout_marginStart="132dp"
             android:layout_marginTop="8dp"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Marian"
+            android:text="@string/marian"
             android:textAlignment="textEnd"
             android:textColor="@color/colorPrimary"
             android:textSize="34sp"
@@ -73,11 +73,11 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="134dp"
             android:background="@drawable/btn_bg"
+            android:contentDescription="@string/profilepicture"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -134,12 +134,11 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="4dp"
                 android:background="@drawable/input_bg"
-                android:drawableStart="@drawable/main_email"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:hint="@string/email"
                 android:importantForAutofill="no"
-                android:inputType="textEmailAddress"
+
                 android:minHeight="48dp"
                 android:paddingStart="20dp"
                 android:paddingTop="10dp"
@@ -150,7 +149,8 @@
                 app:layout_constraintEnd_toEndOf="@+id/txtview_email"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/txtview_email"
-                app:layout_constraintTop_toBottomOf="@+id/txtview_email" />
+                app:layout_constraintTop_toBottomOf="@+id/txtview_email"
+                app:drawableStartCompat="@drawable/main_email" />
 
             <Button
                 android:id="@+id/ed_email"
@@ -158,7 +158,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/btn_bg"
-                android:text="Change Email"
+                android:text="@string/change_email"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -206,7 +206,6 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="4dp"
                 android:background="@drawable/input_bg"
-                android:drawableStart="@android:drawable/ic_lock_idle_lock"
                 android:drawablePadding="10dp"
                 android:ems="10"
                 android:hint="@string/pw"
@@ -222,7 +221,8 @@
                 app:layout_constraintEnd_toEndOf="@+id/txtview_password"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/txtview_password"
-                app:layout_constraintTop_toBottomOf="@+id/txtview_password" />
+                app:layout_constraintTop_toBottomOf="@+id/txtview_password"
+                app:drawableStartCompat="@android:drawable/ic_lock_idle_lock" />
 
             <Button
                 android:id="@+id/ed_password"
@@ -230,7 +230,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/btn_bg"
-                android:text="Change Password"
+                android:text="@string/change_password"
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="@+id/password_textview"

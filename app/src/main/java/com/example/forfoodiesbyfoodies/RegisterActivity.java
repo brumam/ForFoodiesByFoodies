@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-//        Bind impostors
+//        Bind / Init variables
         reg_already=findViewById(R.id.reg_already);
         reg_input_email=findViewById(R.id.reg_input_email);
         reg_input_fn=findViewById(R.id.reg_input_fn);
@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         mDatabase = database.getReference(USER);
         mAuth = FirebaseAuth.getInstance();
 
-//      OnClick Event for createUser
+//      OnClick Event for createUser check if the user enter email and password in EDIT TEXT
         btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
