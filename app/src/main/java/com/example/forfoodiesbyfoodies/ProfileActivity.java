@@ -51,6 +51,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Uri imageUri;
 //    private String myUri = "";
     private StorageReference storageReference;
+    ImageView onfoff;
 
 
 
@@ -73,6 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
         emailTxtView = findViewById(R.id.email_imageview);
         passwordTxtView = findViewById(R.id.password_textview);
         userImageView = findViewById(R.id.user_imageview);
+        onfoff = findViewById(R.id.onoff);
 
         mAuth = FirebaseAuth.getInstance();
         mStore = FirebaseFirestore.getInstance();
@@ -80,8 +82,10 @@ public class ProfileActivity extends AppCompatActivity {
 
         StorageReference profileRef = storageReference.child("users/"+mAuth.getCurrentUser().getUid()+".jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+
             @Override
             public void onSuccess(Uri uri) {
+                onfoff.setVisibility(View.GONE);
                 Picasso.get().load(uri).into(userImageView);
             }
         });
@@ -117,8 +121,10 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         userImageView.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+
 //                Add image
                 Intent addImageIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(addImageIntent,1000);
@@ -132,8 +138,10 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1000){
+            onfoff.setVisibility(View.GONE);
             if(resultCode == Activity.RESULT_OK){
                 Uri imageUri = data.getData();
+
 
                 // userImageView.setImageURI(imageUri);
 
@@ -149,16 +157,20 @@ public class ProfileActivity extends AppCompatActivity {
         fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                onfoff.setVisibility(View.GONE);
                 fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
                         Picasso.get().load(uri).into(userImageView);
+
                     }
                 });
             }
         }).addOnFailureListener(new OnFailureListener() {
+
             @Override
             public void onFailure(@NonNull Exception e) {
+                onfoff.setVisibility(View.VISIBLE);
                 Toast.makeText(ProfileActivity.this, "Failed", Toast.LENGTH_SHORT).show();
             }
         });
