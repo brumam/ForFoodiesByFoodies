@@ -24,5 +24,7 @@
     <string name="back_fw">Back to</string>
     <string name="fw_log">Log In</string>
     <string name="main_log_out">Log Out</string>
+    <string name="emailaddress"><u>Email address</u></string>
+    <string name="passwordprof"><u>Password</u></string>
 
 </resources>

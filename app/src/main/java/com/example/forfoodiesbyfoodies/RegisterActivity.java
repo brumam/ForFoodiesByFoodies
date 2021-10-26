@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText reg_input_email,reg_input_fn,reg_input_sn,reg_input_pw;
     private TextView reg_already;
     private Button btn_reg;
+    private ProgressBar progressBar;
 
     private FirebaseDatabase database;
     private DatabaseReference mDatabase;
@@ -48,6 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
         reg_input_sn=findViewById(R.id.reg_input_sn);
         reg_input_pw=findViewById(R.id.reg_input_pw);
         btn_reg = findViewById(R.id.btn_reg);
+        progressBar = findViewById(R.id.reg_progressBar);
 
         database = FirebaseDatabase.getInstance();
         mDatabase = database.getReference(USER);
@@ -79,17 +82,33 @@ public class RegisterActivity extends AppCompatActivity {
 
 //    Register function to create user in Firebase - Error messages and Toast for successfully or not
     private void registerUser(String email, String password){
+        progressBar.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>(){
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task){
                         if(task.isSuccessful()){
+                            try{
+                                Thread.sleep(3000);
+
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(RegisterActivity.this,"User registered successfully.",Toast.LENGTH_SHORT).show();
                             Log.d(TAG,"createUserWithEmail: success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }else{
+                            try {
+                                Thread.sleep(3000);
+
+                            progressBar.setVisibility(View.GONE);
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(RegisterActivity.this, "Authentication failed",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, "Email error: " + task.getException(),Toast.LENGTH_SHORT).show();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 });
