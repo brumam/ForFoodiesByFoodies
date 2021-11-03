@@ -2,11 +2,23 @@ package com.example.forfoodiesbyfoodies;
 
 public class User {
     private String email, password,firstName,lastName;
+    private String imageUrl;
 
     public User() {
 
     }
 
+    public User(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public User(String email, String password, String firstName, String lastName) {
         this.email = email;

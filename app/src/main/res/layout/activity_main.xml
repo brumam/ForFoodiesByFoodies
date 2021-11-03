@@ -7,64 +7,81 @@
     android:background="@drawable/main_bg"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/welcometxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="172dp"
-        android:text="@string/main_wc_txt"
-        android:textColor="@color/white"
-        android:textSize="60sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_logo" />
-
-    <ImageView
-        android:id="@+id/main_logo"
-        android:layout_width="144dp"
-        android:layout_height="144dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prof_activity"
-        app:srcCompat="@drawable/logo_app" />
-
-    <Button
-        android:id="@+id/main_log_out"
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="114dp"
-        android:layout_marginBottom="221dp"
-        android:background="@drawable/btn_bg"
-        android:drawableStart="@drawable/input_bg"
-        android:text="@string/main_log_out"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        android:layout_height="0dp"
+        android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/welcometxt"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/welcometxt"
-        app:layout_constraintTop_toBottomOf="@+id/welcometxt"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/prof_activity"
-        android:layout_width="96dp"
-        android:layout_height="99dp"
-        android:layout_marginStart="280dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="17dp"
-        android:background="@drawable/btn_bg"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/main_logo"
+                android:layout_width="144dp"
+                android:layout_height="144dp"
+                android:layout_marginStart="124dp"
+                android:layout_marginEnd="125dp"
+                android:contentDescription="@string/logo_app"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/prof_activity"
+                app:srcCompat="@drawable/logo_app" />
+
+            <TextView
+                android:id="@+id/welcometxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="23dp"
+                android:layout_marginEnd="73dp"
+                android:text="@string/main_wc_txt"
+                android:textColor="@color/white"
+                android:textSize="60sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_logo" />
+
+            <Button
+                android:id="@+id/main_log_out"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="114dp"
+                android:layout_marginBottom="189dp"
+                android:background="@drawable/btn_bg"
+                android:drawableStart="@drawable/input_bg"
+                android:text="@string/main_log_out"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/welcometxt"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/welcometxt"
+                app:layout_constraintTop_toBottomOf="@+id/welcometxt"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/prof_activity"
+                android:layout_width="96dp"
+                android:layout_height="99dp"
+                android:layout_marginStart="280dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="17dp"
+                android:background="@drawable/btn_bg"
+                android:contentDescription="@string/logo_app"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

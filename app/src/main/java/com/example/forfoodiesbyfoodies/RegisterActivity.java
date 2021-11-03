@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 //    Impostors
-    private EditText reg_input_email,reg_input_fn,reg_input_sn,reg_input_pw;
+    private EditText reg_input_email,reg_input_fn,reg_input_sn,reg_input_pw,reg_confirm_pw;
     private TextView reg_already;
     private Button btn_reg;
     private ProgressBar progressBar;
@@ -49,6 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
         reg_input_fn=findViewById(R.id.reg_input_fn);
         reg_input_sn=findViewById(R.id.reg_input_sn);
         reg_input_pw=findViewById(R.id.reg_input_pw);
+        reg_confirm_pw = findViewById(R.id.reg_confirm_pw);
         btn_reg = findViewById(R.id.btn_reg);
         progressBar = findViewById(R.id.reg_progressBar);
 
@@ -62,15 +63,32 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = reg_input_email.getText().toString();
                 String password = reg_input_pw.getText().toString();
+                String confirmpw = reg_confirm_pw.getText().toString();
+                String firstName = reg_input_fn.getText().toString();
+                String lastName = reg_input_sn.getText().toString();
+
+
+
 
                 if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                     Toast.makeText(getApplicationContext(), "Enter email and password",Toast.LENGTH_LONG).show();
                     return;
                 }
-                String firstName = reg_input_fn.getText().toString();
-                String lastName = reg_input_sn.getText().toString();
-                user = new User(email,password,firstName,lastName);
-                registerUser(email,password);
+                if (!TextUtils.isEmpty(password) && !TextUtils.isEmpty(confirmpw))
+                {
+                    if(password.equals(confirmpw))
+                    {
+                        //are equal
+                        user = new User(email,password,firstName,lastName);
+                        registerUser(email,password);
+
+                    }
+                    else {
+                        //are different
+                        Toast.makeText(RegisterActivity.this, "Password do not match", Toast.LENGTH_LONG).show();
+                    }
+                }
+
             }
         });
 

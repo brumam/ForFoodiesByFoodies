@@ -13,7 +13,8 @@
     <string name="email">E-mail Address</string>
     <string name="fn">First Name</string>
     <string name="sn">Last Name</string>
-    <string name="pw">******</string>
+    <string name="pw">Password</string>
+    <string name="confirm_pw">Confirm password</string>
     <string name="forgot_pw">Forgot Password ?</string>
     <string name="log_google">Google</string>
     <string name="log_facebook">Facebook</string>

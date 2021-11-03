@@ -20,12 +20,14 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.ktx.Firebase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -38,20 +40,22 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView emailTxtView, passwordTxtView;
     private ImageView userImageView;
     private final String TAG = this.getClass().getName().toUpperCase();
-    private FirebaseDatabase database;
-    private DatabaseReference mDatabase;
     private Map<String, String> userMap;
     private String email;
     private static final String USERS = "user";
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore mStore;
+    private FirebaseDatabase database;
     private String userId;
-    private FirebaseUser user;
+    private FirebaseUser fuser;
     private Uri imageUri;
-//    private String myUri = "";
+    private String myUri = "";
     private StorageReference storageReference;
+    private DatabaseReference mDatabase;
+    private User user;
     ImageView onfoff;
+
 
 
 
@@ -67,7 +71,7 @@ public class ProfileActivity extends AppCompatActivity {
         DatabaseReference userRef = rootRef.child(USERS);
         Log.v("USERID", userRef.getKey());
 
-//        Init variables
+//        Bind impostors
 
         nameTxtView = findViewById(R.id.name_textview);
         lastTxtView = findViewById(R.id.last_name_textview);
@@ -76,9 +80,12 @@ public class ProfileActivity extends AppCompatActivity {
         userImageView = findViewById(R.id.user_imageview);
         onfoff = findViewById(R.id.onoff);
 
+
         mAuth = FirebaseAuth.getInstance();
         mStore = FirebaseFirestore.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference("user");
         storageReference = FirebaseStorage.getInstance().getReference();
+
 
         StorageReference profileRef = storageReference.child("users/"+mAuth.getCurrentUser().getUid()+".jpg");
         profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -86,6 +93,16 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Uri uri) {
                 onfoff.setVisibility(View.GONE);
+
+                User user = new User(uri.toString());
+                String keyId = mDatabase.push().getKey();
+                mDatabase.child(keyId).setValue(user);
+//                user = new User(uri.toString());
+//
+//                FirebaseUser imguser = mAuth.getCurrentUser();
+//                updateUI(imguser);
+
+
                 Picasso.get().load(uri).into(userImageView);
             }
         });
@@ -129,6 +146,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent addImageIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(addImageIntent,1000);
 
+
             }
         });
 
@@ -153,6 +171,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void uploadImageToFirebase(Uri imageUri) {
 //        Upload Image to Firebase Storage
+
         final StorageReference fileRef = storageReference.child("users/"+mAuth.getCurrentUser().getUid()+".jpg");
         fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -161,7 +180,16 @@ public class ProfileActivity extends AppCompatActivity {
                 fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
+
+
+                        user = new User(uri.toString());
+                        String keyId = mDatabase.push().getKey();
+                        mDatabase.child(keyId).setValue(user);
+
+
+
                         Picasso.get().load(uri).into(userImageView);
+
 
                     }
                 });
@@ -174,5 +202,13 @@ public class ProfileActivity extends AppCompatActivity {
                 Toast.makeText(ProfileActivity.this, "Failed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void  updateUI(FirebaseUser currentUser){
+
+
+
+
+
+
     }
 }
