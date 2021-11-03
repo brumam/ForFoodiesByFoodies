@@ -32,5 +32,7 @@
     <string name="change_password">Change Password</string>
     <string name="marian">Marian</string>
     <string name="bruma">Bruma</string>
+    <string name="Edit_Profile">Edit your profile</string>
+    <string name="save_prof">Save</string>
 
 </resources>
