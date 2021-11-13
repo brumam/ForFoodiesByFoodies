@@ -10,4 +10,6 @@
     <color name="black">#000000</color>
     <color name="red">#ec5800</color>
     <color name="blue">#3b5998</color>
+    <color name="logo">#c69c6d</color>
+    <color name="grayColor">#8f8f8f</color>
 </resources>

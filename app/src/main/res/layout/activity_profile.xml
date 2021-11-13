@@ -6,105 +6,85 @@
     android:layout_height="match_parent"
     android:background="@drawable/main_bg">
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="391dp"
-        android:layout_height="247dp"
-        android:fillViewport="true"
+
+    <TextView
+        android:id="@+id/welcometxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="113dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="117dp"
+        android:text="@string/main_wc_txt"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_imageview" />
+
+    <ImageView
+        android:id="@+id/user_imageview"
+        android:layout_width="126dp"
+        android:layout_height="109dp"
+        android:layout_marginStart="133dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="134dp"
+        android:background="@drawable/profshape"
+        android:backgroundTint="@color/btn_main_log"
+        android:contentDescription="@string/profilepicture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp">
+    <ImageView
+        android:id="@+id/onoff"
+        android:layout_width="121dp"
+        android:layout_height="109dp"
+        android:contentDescription="@string/logo_app"
+        app:layout_constraintBottom_toTopOf="@+id/welcometxt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/main_person" />
 
-            <TextView
-                android:id="@+id/welcometxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="113dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="117dp"
-                android:text="@string/main_wc_txt"
-                android:textColor="@color/white"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/user_imageview" />
+    <TextView
+        android:id="@+id/last_name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="132dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/bruma"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorPrimary"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/name_textview"
+        app:layout_constraintTop_toBottomOf="@+id/welcometxt" />
 
-            <TextView
-                android:id="@+id/last_name_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="132dp"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:text="@string/bruma"
-                android:textAlignment="textEnd"
-                android:textColor="@color/colorPrimary"
-                android:textSize="34sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/name_textview"
-                app:layout_constraintTop_toBottomOf="@+id/welcometxt" />
-
-            <TextView
-                android:id="@+id/name_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="132dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="sans-serif-condensed-medium"
-                android:text="@string/marian"
-                android:textAlignment="textEnd"
-                android:textColor="@color/colorPrimary"
-                android:textSize="34sp"
-                app:layout_constraintEnd_toStartOf="@+id/last_name_textview"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/welcometxt" />
-
-            <ImageView
-                android:id="@+id/user_imageview"
-                android:layout_width="126dp"
-                android:layout_height="109dp"
-                android:layout_marginStart="133dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="134dp"
-                android:background="@drawable/profshape"
-                android:backgroundTint="@color/btn_main_log"
-                android:contentDescription="@string/profilepicture"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/onoff"
-                android:layout_width="121dp"
-                android:layout_height="109dp"
-                android:contentDescription="@string/logo_app"
-                app:layout_constraintBottom_toTopOf="@+id/welcometxt"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/main_person" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
+    <TextView
+        android:id="@+id/name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="@string/marian"
+        android:textAlignment="textEnd"
+        android:textColor="@color/colorPrimary"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/last_name_textview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcometxt" />
 
     <ScrollView
         android:layout_width="392dp"
         android:layout_height="455dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
@@ -121,7 +101,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="339dp"
-                android:layout_height="165dp"
+                android:layout_height="113dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -169,22 +149,6 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/txtview_email"
                     app:layout_constraintTop_toBottomOf="@+id/txtview_email" />
-
-                <Button
-                    android:id="@+id/ed_email"
-                    android:layout_width="135dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/btn_bg"
-                    android:text="@string/change_email"
-                    android:textAllCaps="false"
-                    android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/email_imageview"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toStartOf="@+id/email_imageview"
-                    app:layout_constraintTop_toBottomOf="@+id/email_imageview"
-                    app:layout_constraintVertical_bias="0.0" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

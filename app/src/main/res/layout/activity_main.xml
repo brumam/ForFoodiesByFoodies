@@ -27,11 +27,13 @@
                 android:layout_width="144dp"
                 android:layout_height="144dp"
                 android:layout_marginStart="124dp"
+                android:layout_marginTop="32dp"
                 android:layout_marginEnd="125dp"
                 android:contentDescription="@string/logo_app"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/prof_activity"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/logo_app" />
 
             <TextView
@@ -39,13 +41,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="70dp"
-                android:layout_marginTop="23dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="73dp"
                 android:text="@string/main_wc_txt"
                 android:textColor="@color/white"
                 android:textSize="60sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/main_logo" />
 
@@ -53,34 +56,104 @@
                 android:id="@+id/main_log_out"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="114dp"
-                android:layout_marginBottom="189dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="60dp"
                 android:background="@drawable/btn_bg"
-                android:drawableStart="@drawable/input_bg"
+                android:drawableEnd="@drawable/ic_baseline_login_24"
+                android:paddingLeft="35dp"
+                android:paddingRight="35dp"
                 android:text="@string/main_log_out"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/main_forum"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/main_forum"
+                app:layout_constraintTop_toBottomOf="@+id/main_forum" />
+
+            <Button
+                android:id="@+id/main_restaurant"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/btn_bg"
+                android:backgroundTint="@color/logo"
+                android:drawableStart="@drawable/ic_baseline_restaurant_24"
+                android:paddingStart="25dp"
+                android:text="@string/main_restaurant"
+                android:textAlignment="center"
+                android:textColor="@color/btn_main_log"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/welcometxt"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/welcometxt"
-                app:layout_constraintTop_toBottomOf="@+id/welcometxt"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@+id/welcometxt" />
+
+            <Button
+                android:id="@+id/main_street_food"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/btn_bg"
+                android:backgroundTint="@color/logo"
+                android:drawableStart="@drawable/ic_baseline_fastfood_24"
+                android:paddingStart="25dp"
+                android:text="@string/main_street_food"
+                android:textColor="@color/btn_main_log"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/main_restaurant"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/main_restaurant"
+                app:layout_constraintTop_toBottomOf="@+id/main_restaurant" />
+
+            <Button
+                android:id="@+id/main_forum"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/btn_bg"
+                android:backgroundTint="@color/logo"
+                android:drawableStart="@drawable/ic_baseline_forum_24"
+                android:paddingStart="25dp"
+                android:paddingEnd="45dp"
+                android:text="@string/main_forum"
+                android:textColor="@color/btn_main_log"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/main_street_food"
+                app:layout_constraintStart_toStartOf="@+id/main_street_food"
+                app:layout_constraintTop_toBottomOf="@+id/main_street_food" />
 
             <ImageView
-                android:id="@+id/prof_activity"
-                android:layout_width="96dp"
-                android:layout_height="99dp"
-                android:layout_marginStart="280dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="17dp"
-                android:background="@drawable/btn_bg"
+                android:id="@+id/main_user_imageview2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="311dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="22dp"
+                android:background="@drawable/input_bg"
+                android:backgroundTint="@color/btn_main_log"
+                android:contentDescription="@string/profilepicture"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/main_onoff2"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="311dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="22dp"
                 android:contentDescription="@string/logo_app"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:srcCompat="@drawable/main_person" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

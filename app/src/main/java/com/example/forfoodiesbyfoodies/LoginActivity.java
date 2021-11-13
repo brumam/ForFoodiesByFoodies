@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.forfoodiesbyfoodies.Profile.ProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -31,6 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
 
 
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseUser mUser;
     private FirebaseAuth mAuth;
 
 
@@ -57,6 +61,13 @@ public class LoginActivity extends AppCompatActivity {
             updateUI(mAuth.getCurrentUser());
         }
 
+        mAuthListener = new FirebaseAuth.AuthStateListener(){
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
+                mUser = firebaseAuth.getCurrentUser();
+
+            }
+        };
 
 
 
@@ -67,10 +78,36 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
                 progressBar.setVisibility(View.VISIBLE);
                 email = log_input_email.getText().toString();
                 password = log_input_pw.getText().toString();
-                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+                if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+                    login(email,password);
+                    progressBar.setVisibility(View.VISIBLE);
+                }
+                else{
+                        Toast.makeText(getApplicationContext(), "Enter email and password",Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
+                        return;
+                }
+
+
+            }
+        });
+//     Event listener onclick for  create new account
+        log_sign_up.setOnClickListener(view ->{
+            startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+        });
+//      On click event for Forgot Password
+        forgot_pw.setOnClickListener(view ->{
+            startActivity(new Intent(LoginActivity.this,ForgotActivity.class));
+        });
+
+    }
+
+    private void  login (String email, String password){
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
@@ -80,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
 //                            Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "signInWithEmail: success");
+                                Toast.makeText(LoginActivity.this, "Signed In", Toast.LENGTH_SHORT).show();
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 updateUI(user);
@@ -96,39 +134,15 @@ public class LoginActivity extends AppCompatActivity {
                         //...
                     }
                 });
-
-            }
-
-
-        });
-//     Event listener onclick for  create new account
-        log_sign_up.setOnClickListener(view ->{
-            startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
-        });
-//      On click event for Forgot Password
-        forgot_pw.setOnClickListener(view ->{
-            startActivity(new Intent(LoginActivity.this,ForgotActivity.class));
-        });
-
     }
 
-    //        Custom auth Email / Pw
-
-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if(currentUser == null){
-//
-//        }
-//    }
 
     @Override
     protected void onResume() {
         super.onResume();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        mAuth.addAuthStateListener(mAuthListener);
         if (currentUser != null) {
             updateUI(currentUser);
         }

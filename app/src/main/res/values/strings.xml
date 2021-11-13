@@ -32,7 +32,16 @@
     <string name="change_password">Change Password</string>
     <string name="marian">Marian</string>
     <string name="bruma">Bruma</string>
-    <string name="Edit_Profile">Edit your profile</string>
+    <string name="Edit_Profile">Change your password</string>
     <string name="save_prof">Save</string>
+    <string name="new_password">New password</string>
+    <string name="main_restaurant">Restaurant</string>
+    <string name="main_street_food">Street Food</string>
+    <string name="main_forum">Forum</string>
+    <string name="btn_add_rest">Add new Restaurant</string>
+    <string name="rest_name">Restaurant Name</string>
+    <string name="rest_description">Resturant Description</string>
+    <string name="submit_text">Submit</string>
+
 
 </resources>
