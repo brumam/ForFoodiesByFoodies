@@ -4,7 +4,7 @@ package com.example.forfoodiesbyfoodies;
 
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.media.Image;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -85,7 +85,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         mDatabase = FirebaseDatabase.getInstance().getReference("user");
-        storageReference = FirebaseStorage.getInstance().getReference("users");
+        storageReference = FirebaseStorage.getInstance().getReference("PROFILE_PIC_USERS");
         mAuth = FirebaseAuth.getInstance();
         fuser = mAuth.getCurrentUser();
 
@@ -148,7 +148,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         newPost.setValue(dataToSave);
 
 
-
+                                        registerUser(email, password);
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
@@ -164,11 +164,12 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                         });
 
-                        registerUser(email, password);
+
 
                     } else {
                         //are different
                         Toast.makeText(RegisterActivity.this, "Password do not match", Toast.LENGTH_LONG).show();
+                        return;
                     }
                 }
 
@@ -214,11 +215,11 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task){
                         if(task.isSuccessful()){
                             try{
-                                Thread.sleep(3000);
+                                Thread.sleep(1000);
 
                             progressBar.setVisibility(View.GONE);
                             Toast.makeText(RegisterActivity.this,"User registered successfully.",Toast.LENGTH_SHORT).show();
-                            Log.d(TAG,"createUserWithEmail: success");
+
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
                             } catch (InterruptedException e) {
@@ -229,8 +230,8 @@ public class RegisterActivity extends AppCompatActivity {
                                 Thread.sleep(3000);
 
                             progressBar.setVisibility(View.GONE);
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(RegisterActivity.this, "Email error: " + task.getException(),Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(RegisterActivity.this, " Your email is already registered.  ",Toast.LENGTH_SHORT).show();
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }

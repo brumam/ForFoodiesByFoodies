@@ -1,9 +1,6 @@
 package com.example.forfoodiesbyfoodies.Helpers;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-public class User implements Parcelable {
+public class User {
     private String email, password,firstName,lastName;
     private String imageUrl;
     private String userType;
@@ -13,26 +10,6 @@ public class User implements Parcelable {
     }
 
 
-    protected User(Parcel in) {
-        email = in.readString();
-        password = in.readString();
-        firstName = in.readString();
-        lastName = in.readString();
-        imageUrl = in.readString();
-        userType = in.readString();
-    }
-
-    public static final Creator<User> CREATOR = new Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
-        }
-
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
 
     public String getUserType() {
         return userType;
@@ -90,20 +67,5 @@ public class User implements Parcelable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(email);
-        dest.writeString(password);
-        dest.writeString(firstName);
-        dest.writeString(lastName);
-        dest.writeString(imageUrl);
-        dest.writeString(userType);
     }
 }

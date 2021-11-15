@@ -24,14 +24,13 @@
 
             <ImageView
                 android:id="@+id/main_logo"
-                android:layout_width="144dp"
-                android:layout_height="144dp"
+                android:layout_width="121dp"
+                android:layout_height="109dp"
                 android:layout_marginStart="124dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="125dp"
                 android:contentDescription="@string/logo_app"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/logo_app" />
@@ -41,14 +40,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="70dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="73dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="70dp"
                 android:text="@string/main_wc_txt"
                 android:textColor="@color/white"
-                android:textSize="60sp"
+                android:textSize="34sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.526"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/main_logo" />
 
@@ -68,7 +67,6 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/main_forum"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/main_forum"
                 app:layout_constraintTop_toBottomOf="@+id/main_forum" />
 
@@ -76,7 +74,7 @@
                 android:id="@+id/main_restaurant"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="56dp"
                 android:background="@drawable/btn_bg"
                 android:backgroundTint="@color/logo"
                 android:drawableStart="@drawable/ic_baseline_restaurant_24"

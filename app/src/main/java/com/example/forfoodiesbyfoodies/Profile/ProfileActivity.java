@@ -74,7 +74,7 @@ public class ProfileActivity extends AppCompatActivity {
         lastTxtView = findViewById(R.id.last_name_textview);
         emailTxtView = findViewById(R.id.email_imageview);
         passwordTxtView = findViewById(R.id.password_textview);
-//        userImageView = findViewById(R.id.user_imageview);
+        userImageView = findViewById(R.id.user_imageview);
         onfoff = findViewById(R.id.onoff);
 
 
@@ -165,6 +165,7 @@ public class ProfileActivity extends AppCompatActivity {
                 emailTxtView.setText(email);
                 passwordTxtView.setText(password);
                 Picasso.get().load(imageUrl).fit().into(userImageView);
+                onfoff.setVisibility(View.INVISIBLE);
 
             }
 

@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.forfoodiesbyfoodies.Helpers.Restaurant;
 import com.example.forfoodiesbyfoodies.Helpers.User;
 import com.example.forfoodiesbyfoodies.Profile.ProfileActivity;
+import com.example.forfoodiesbyfoodies.Restaurant.RecyclerActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +33,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 //    Declare Impostors
         private Button main_log_out,main_rest;
-        private ImageView profile;
+        private ImageView profile,imglog;
         private DatabaseReference mDatabase;
         private StorageReference mStorage;
         private FirebaseDatabase firebaseDatabase;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         main_log_out = findViewById(R.id.main_log_out);
         main_rest = findViewById(R.id.main_restaurant);
         profile = findViewById(R.id.main_user_imageview2);
+        imglog = findViewById(R.id.main_onoff2);
         mAuth = FirebaseAuth.getInstance();
 
         if(mAuth.getCurrentUser() != null){
@@ -75,8 +77,13 @@ public class MainActivity extends AppCompatActivity {
                 for(DataSnapshot dss: snapshot.getChildren()){
                     User user = dss.getValue(User.class);
                     userList.add(user);
+                    Picasso.get().load(user.getImageUrl()).fit().into(profile);
+                    imglog.setVisibility(View.INVISIBLE);
+
+
 
                 }
+
 
             }
 
@@ -127,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         main_rest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, RestaurantActivity.class));
+                startActivity(new Intent(MainActivity.this, RecyclerActivity.class));
             }
         });
 
