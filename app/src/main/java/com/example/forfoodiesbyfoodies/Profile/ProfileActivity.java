@@ -64,9 +64,9 @@ public class ProfileActivity extends AppCompatActivity {
         email = intent.getStringExtra("email");
 
 
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference userRef = rootRef.child(USERS);
-        Log.v("USERID", userRef.getKey());
+//        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+//        DatabaseReference userRef = rootRef.child(USERS);
+//        Log.v("USERID", userRef.getKey());
 
 //        Bind impostors
 
@@ -85,67 +85,11 @@ public class ProfileActivity extends AppCompatActivity {
 
 
 
-//      StorageReference profileRef = storageReference.child("users/"+mAuth.getCurrentUser().getUid()+"." + getExt(url));
-//        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//
-//            @Override
-//            public void onSuccess(Uri uri) {
-//                onfoff.setVisibility(View.GONE);
-//
-//                String downloadURL = uri.toString();
-//
-//
-//
-//
-//                User user = new User(uri.toString());
-//
-//                mDatabase.child(fuser.getUid()).child("imageUrl").setValue(uri.toString());
-//                FirebaseUser imguser = mAuth.getCurrentUser();
-//                updateUI(imguser);
-//
-//
-////                Picasso.get().load(uri).into(userImageView);
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//                profileRef.delete();
-//            }
-//        });
-//            userImageView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                  StorageReference reference = storageReference.child("users/"+mAuth.getCurrentUser().getUid()+"."+getExt(url));
-//                    reference.putFile(url).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                        @Override
-//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                            reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                                @Override
-//                                public void onSuccess(Uri uri) {
-//                                    String downloadUrl = uri.toString();
-//                                    Intent intent = new Intent(ProfileActivity.this, EditProfile.class);
-//                                    intent.putExtra(URL, downloadUrl);
-//                                    startActivity(intent);
-//                                }
-//                            }).addOnFailureListener(new OnFailureListener() {
-//                                @Override
-//                                public void onFailure(@NonNull Exception e) {
-//                                    reference.delete();
-//                                }
-//                            });
-//                        }
-//                    }).addOnFailureListener(new OnFailureListener() {
-//                        @Override
-//                        public void onFailure(@NonNull Exception e) {
-//
-//                        }
-//                    });
-//                }
-//            });
+
 
 
         // Read from the database
-        userRef.addValueEventListener(new ValueEventListener() {
+        mDatabase.addValueEventListener(new ValueEventListener() {
             String fname, lname, password, imageUrl;
 
             @Override
@@ -156,6 +100,7 @@ public class ProfileActivity extends AppCompatActivity {
                         lname = keyId.child("lastName").getValue(String.class);
                         password = keyId.child("password").getValue(String.class);
                         imageUrl = keyId.child("imageUrl").getValue(String.class);
+
 
                         break;
                     }

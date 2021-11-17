@@ -120,11 +120,13 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Enter email and password", Toast.LENGTH_LONG).show();
+                if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) && url == null) {
+                    Toast.makeText(getApplicationContext(), "Please complete the register account", Toast.LENGTH_LONG).show();
                     return;
                 }
-                if (!TextUtils.isEmpty(password) && !TextUtils.isEmpty(confirmpw)) {
+
+                if (!TextUtils.isEmpty(password) && !TextUtils.isEmpty(confirmpw)&& url != null) {
+
                     if (password.equals(confirmpw)) {
                         //are equal
 
@@ -171,6 +173,9 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this, "Password do not match", Toast.LENGTH_LONG).show();
                         return;
                     }
+                }else{
+                    Toast.makeText(RegisterActivity.this, "Please upload your profile picture", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
             }

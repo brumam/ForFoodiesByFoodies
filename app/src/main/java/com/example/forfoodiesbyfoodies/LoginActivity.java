@@ -40,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,14 +48,15 @@ public class LoginActivity extends AppCompatActivity {
 
         // Bind impostors
 
-        log_sign_up=(TextView) findViewById(R.id.txtview_email);
-        forgot_pw=(TextView) findViewById(R.id.forgot_pw);
-        log_input_pw=(EditText) findViewById(R.id.log_input_pw);
-        log_input_email=(EditText) findViewById(R.id.log_input_email);
-        btn_log =(Button) findViewById(R.id.btn_log);
+        log_sign_up= findViewById(R.id.txtview_email);
+        forgot_pw= findViewById(R.id.forgot_pw);
+        log_input_pw= findViewById(R.id.log_input_pw);
+        log_input_email= findViewById(R.id.log_input_email);
+        btn_log = findViewById(R.id.btn_log);
         progressBar = findViewById(R.id.log_progressBar);
 
         mAuth =FirebaseAuth.getInstance();
+
 
 //        UpdateUI with getCurrentUser function
         if(mAuth.getCurrentUser() != null){
@@ -82,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.VISIBLE);
                 email = log_input_email.getText().toString();
                 password = log_input_pw.getText().toString();
+
                 if(!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
                     login(email,password);
                     progressBar.setVisibility(View.VISIBLE);
@@ -117,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
 //                            Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "signInWithEmail: success");
-                                Toast.makeText(LoginActivity.this, "Signed In", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(LoginActivity.this, "Signed In", Toast.LENGTH_SHORT).show();
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 updateUI(user);
