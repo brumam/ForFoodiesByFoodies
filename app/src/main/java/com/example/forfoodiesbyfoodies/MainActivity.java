@@ -11,8 +11,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.forfoodiesbyfoodies.App.AppClass;
 import com.example.forfoodiesbyfoodies.Helpers.Restaurant;
 import com.example.forfoodiesbyfoodies.Helpers.User;
 import com.example.forfoodiesbyfoodies.Profile.ProfileActivity;
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         private DatabaseReference mDatabase;
         private StorageReference mStorage;
         private FirebaseDatabase firebaseDatabase;
+        TextView welcometxt;
 
         private FirebaseAuth mAuth;
         private FirebaseAuth.AuthStateListener mAuthListener;
@@ -44,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         private String email;
 
     private static final String USERS = "user";
-    List<User> userList =  new ArrayList<>();
+//    List<User> userList =  new ArrayList<>();
 
 
 
@@ -59,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
         profile = findViewById(R.id.main_user_imageview2);
         imglog = findViewById(R.id.main_onoff2);
         mAuth = FirebaseAuth.getInstance();
+        welcometxt = findViewById(R.id.welcometxt);
+
 
         if(mAuth.getCurrentUser() != null){
             updateUI(mAuth.getCurrentUser());
@@ -67,32 +72,32 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
 
-        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference userRef = rootRef.child(USERS);
-        Log.v("USERID", userRef.getKey());
-
-        FirebaseDatabase.getInstance().getReference("user").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dss: snapshot.getChildren()){
-                    User user = dss.getValue(User.class);
-                    userList.add(user);
-                    Picasso.get().load(user.getImageUrl()).fit().into(profile);
-                    imglog.setVisibility(View.INVISIBLE);
 
 
 
-                }
 
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-        });
+//        FirebaseDatabase.getInstance().getReference("user").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                for(DataSnapshot dss: snapshot.getChildren()){
+//                    User user = dss.getValue(User.class);
+//                    userList.add(user);
+//                    Picasso.get().load(user.getImageUrl()).fit().into(profile);
+//                    imglog.setVisibility(View.INVISIBLE);
+//
+//
+//
+//                }
+//
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//
+//        });
 
 
 

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.forfoodiesbyfoodies.Adaptors.EateryAdaptor;
+import com.example.forfoodiesbyfoodies.App.AppClass;
 import com.example.forfoodiesbyfoodies.Helpers.Restaurant;
 import com.example.forfoodiesbyfoodies.R;
 import com.example.forfoodiesbyfoodies.Helpers.User;
@@ -37,14 +38,15 @@ import java.util.List;
 public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor.EateryHolder.RestaurantInterface {
         RecyclerView rv;
         EateryAdaptor adapter;
-        Button add_rest, sortbtn;
+        Button add_rest;
         TextView userTypes;
         private String TAG = "user";
 
         DatabaseReference mDatabase;
         FirebaseUser fUser;
         FirebaseAuth mAuth;
-    private String email;
+
+
 
 
         List<Restaurant> restList =  new ArrayList<>();
@@ -57,89 +59,16 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
-            Intent intent = getIntent();
-            email = intent.getStringExtra("email");
 
-        add_rest = findViewById(R.id.add_restaurant);
-        sortbtn = findViewById(R.id.sort_btn);
-        userTypes = findViewById(R.id.userType);
 
+            add_rest = findViewById(R.id.add_restaurant);
+            userTypes = findViewById(R.id.userType);
 
 
             mAuth = FirebaseAuth.getInstance();
             fUser = mAuth.getCurrentUser();
-
-        mDatabase = FirebaseDatabase.getInstance().getReference("user");
-
-
-
-
-        FirebaseDatabase.getInstance().getReference("user").addListenerForSingleValueEvent(new ValueEventListener() {
-            String userType;
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot keyId : snapshot.getChildren()){
-                    if(fUser != null){
-                        userType = keyId.child("userType").getValue(String.class);
-                        userTypes.setText(userType);
-                        userTypes.setVisibility(View.VISIBLE);
-                        if(userTypes.getText().toString().compareTo("consieur")==0){
-                            add_rest.setVisibility(View.VISIBLE);
-                        }else{
-                            add_rest.setVisibility(View.INVISIBLE);
-                        }
-                    }
-
-
-                }
-
-
-
-
-                Toast.makeText(RecyclerActivity.this, "FELICITARI", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-//            mDatabase.addValueEventListener(new ValueEventListener() {
-//            String userType;
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot keyId : snapshot.getChildren()){
-//
-//                        userType = keyId.child("userType").getValue(String.class);
-//                        userTypes.setText(userType);
-//                    userTypes.setVisibility(View.VISIBLE);
-//                    if(userTypes.getText().toString().compareTo("consieur")==0){
-//                        add_rest.setVisibility(View.VISIBLE);
-//
-//                    }else{
-//                        add_rest.setVisibility(View.INVISIBLE);
-//                    }
-//                }
-//
-//
-//
-//
-//                Toast.makeText(RecyclerActivity.this, "FELICITARI", Toast.LENGTH_SHORT).show();
-//                return;
-//            }
-//
-//
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Log.w(TAG, "Failed to read value.", error.toException());
-//            }
-//        });
-
-
-
+            mDatabase = FirebaseDatabase.getInstance().getReference("user");
+            userTypes.setText(AppClass.Session.user.getUserType());
 
 
 
@@ -165,8 +94,17 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 
 
                    }
+
                 adapter = new EateryAdaptor(restList, RecyclerActivity.this);
                 rv.setAdapter(adapter);
+                Collections.sort(restList, new Comparator<Restaurant>() {
+                    @Override
+                    public int compare(Restaurant o1, Restaurant o2) {
+                        return o1.getName().compareTo(o2.getName());
+                    }
+
+                });
+                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -176,7 +114,11 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 
         });
 
-
+            if (AppClass.Session.user.getUserType().compareTo("consieur")==0){
+                add_rest.setVisibility(View.VISIBLE);
+            }else{
+                add_rest.setVisibility(View.INVISIBLE);
+            }
 
 //            if(user"critic".compareTo("critic")==0)
 //            {
@@ -191,26 +133,10 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 //            button3.setVisibility(View.GONE);
 //        }
 
-        sortbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sortArrayList();
-            }
-        });
+
 
     }
 
-    private void sortArrayList(){
-        Collections.sort(restList, new Comparator<Restaurant>() {
-            @Override
-            public int compare(Restaurant o1, Restaurant o2) {
-                return o1.getName().compareTo(o2.getName());
-            }
-
-        });
-        adapter.notifyDataSetChanged();
-
-    }
 
 
     @Override

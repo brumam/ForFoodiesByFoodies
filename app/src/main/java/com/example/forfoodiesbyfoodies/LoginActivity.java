@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -14,28 +15,39 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.forfoodiesbyfoodies.App.AppClass;
+import com.example.forfoodiesbyfoodies.Helpers.User;
 import com.example.forfoodiesbyfoodies.Profile.ProfileActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
     // Declare Impostors on all activities
-    private EditText log_input_email, log_input_pw;
-    private TextView log_sign_up, forgot_pw;
-    private Button btn_log;
-    private ProgressBar progressBar;
+     EditText log_input_email, log_input_pw;
+     TextView log_sign_up, forgot_pw;
+     Button btn_log;
+     ProgressBar progressBar;
 
 
-    private String email, password;
+     String email, password;
     private static final String TAG = "LoginActivity";
 
 
-    private FirebaseAuth.AuthStateListener mAuthListener;
-    private FirebaseUser mUser;
-    private FirebaseAuth mAuth;
+     FirebaseAuth.AuthStateListener mAuthListener;
+     FirebaseUser mUser;
+     FirebaseAuth mAuth;
+     DatabaseReference firebaseDatabase;
+
+
 
 
 
@@ -56,12 +68,13 @@ public class LoginActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.log_progressBar);
 
         mAuth =FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance().getReference("user");
 
 
 //        UpdateUI with getCurrentUser function
-        if(mAuth.getCurrentUser() != null){
-            updateUI(mAuth.getCurrentUser());
-        }
+//        if(mAuth.getCurrentUser() != null){
+//            updateUI(mAuth.getCurrentUser());
+//        }
 
         mAuthListener = new FirebaseAuth.AuthStateListener(){
             @Override
@@ -109,12 +122,32 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+
     private void  login (String email, String password){
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if(task.isSuccessful()){
+                            FirebaseDatabase.getInstance().getReference("user").addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    for(DataSnapshot dss: snapshot.getChildren()){
+                                        if(dss.getKey().compareTo(mAuth.getUid())==0){
+                                            AppClass.Session.user = dss.getValue(User.class);
+
+
+                                        }
+                                    }
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                             try {
                                 Thread.sleep(3000);
 
@@ -122,9 +155,9 @@ public class LoginActivity extends AppCompatActivity {
 //                            Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "signInWithEmail: success");
 //                                Toast.makeText(LoginActivity.this, "Signed In", Toast.LENGTH_SHORT).show();
-                                FirebaseUser user = mAuth.getCurrentUser();
+//                                FirebaseUser user = mAuth.getCurrentUser();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                updateUI(user);
+//                                updateUI(user);
                             } catch (InterruptedException e) {
                                     e.printStackTrace();
                                 }
@@ -148,6 +181,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
     @Override
     protected void onResume() {
         super.onResume();

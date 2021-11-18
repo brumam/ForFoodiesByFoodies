@@ -130,7 +130,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if (password.equals(confirmpw)) {
                         //are equal
 
-                        String name = mDatabase.push().getKey();
+                        String name = mAuth.getCurrentUser().getUid();
                         StorageReference reference = storageReference.child(name+"."+getExt(url));
                         reference.putFile(url).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
@@ -139,7 +139,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(Uri uri) {
                                         String downloadUrl = uri.toString();
-                                        DatabaseReference newPost = mDatabase.push();
+                                        DatabaseReference newPost = mDatabase.child(name);
 
                                         Map<String, String> dataToSave = new HashMap<>();
                                         dataToSave.put("email", reg_input_email.getText().toString());
@@ -246,7 +246,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void  updateUI(FirebaseUser currentUser){
-        String keyId = mDatabase.push().getKey();
+        String keyId = mAuth.getCurrentUser().getUid();
         mDatabase.child(keyId).setValue(user);
         Intent loginIntent = new Intent(this, LoginActivity.class);
         startActivity(loginIntent);
