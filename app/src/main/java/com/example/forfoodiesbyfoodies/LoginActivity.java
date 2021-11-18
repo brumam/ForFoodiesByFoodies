@@ -111,6 +111,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void  login (String email, String password){
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
@@ -128,10 +129,17 @@ public class LoginActivity extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                         } else{
+                            try{
+                                Thread.sleep(1000);
+                                progressBar.setVisibility(View.GONE);
 
 //                        If sign in fails, display a message to the user.
-                            Log.w(TAG,"signInWithEmail:failure", task.getException());
-                            Toast.makeText(getApplicationContext(),"Authentication failed.", Toast.LENGTH_SHORT).show();
+                                Log.w(TAG,"signInWithEmail:failure", task.getException());
+                                Toast.makeText(getApplicationContext(),"Authentication failed.", Toast.LENGTH_SHORT).show();
+                            }catch (InterruptedException e){
+                                e.printStackTrace();
+                            }
+
                         }
 
                         //...

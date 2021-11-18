@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,6 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
      StorageReference storageReference;
      DatabaseReference mDatabase;
      ImageView onfoff;
+     Button ed_pass;
 
 
 
@@ -76,6 +78,7 @@ public class ProfileActivity extends AppCompatActivity {
         passwordTxtView = findViewById(R.id.password_textview);
         userImageView = findViewById(R.id.user_imageview);
         onfoff = findViewById(R.id.onoff);
+        ed_pass = findViewById(R.id.ed_password);
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -118,6 +121,13 @@ public class ProfileActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
                 Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+        ed_pass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this,EditProfile.class);
+                startActivity(intent);
             }
         });
     }

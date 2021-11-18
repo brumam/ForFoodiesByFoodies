@@ -14,7 +14,7 @@
         android:layout_marginStart="113dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="117dp"
-        android:text="@string/main_wc_txt"
+        android:text="@string/profile_wc"
         android:textColor="@color/white"
         android:textSize="40sp"
         android:textStyle="bold"

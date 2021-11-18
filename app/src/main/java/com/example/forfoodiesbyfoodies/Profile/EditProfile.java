@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.example.forfoodiesbyfoodies.LoginActivity;
 import com.example.forfoodiesbyfoodies.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,6 +39,8 @@ public class EditProfile extends AppCompatActivity {
     StorageReference storageReference;
     DatabaseReference mDatabase;
 
+    ProgressBar progressBar;
+
 
 
 
@@ -47,6 +53,7 @@ public class EditProfile extends AppCompatActivity {
         confirm_pw = findViewById(R.id.edit_prof_confirm_pw);
         edit_user_imageview = findViewById(R.id.edit_user_imageview);
         edit_save = findViewById(R.id.edit_save);
+        progressBar = findViewById(R.id.edit_progress);
 
 
         storageReference = FirebaseStorage.getInstance().getReference();
@@ -59,17 +66,39 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String newPassword = edit_password.getText().toString();
+                String confirmPassword = confirm_pw.getText().toString();
                 FirebaseUser fuser = FirebaseAuth.getInstance().getCurrentUser();
+                if(!TextUtils.isEmpty(newPassword)&&!TextUtils.isEmpty(confirmPassword)){
+                    if(newPassword.equals(confirmPassword)){
+                        progressBar.setVisibility(View.VISIBLE);
 
-                fuser.updatePassword(newPassword).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        Log.d(TAG,"User password updated");
-                        Intent i = new Intent(EditProfile.this, ProfileActivity.class);
+                        fuser.updatePassword(newPassword).addOnCompleteListener(new OnCompleteListener<Void>() {
+
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    try{
+                                        Thread.sleep(1000);
+                                        mAuth.signOut();
+                                        Log.d(TAG,"User password updated");
+                                        Toast.makeText(EditProfile.this, "Password Updated", Toast.LENGTH_SHORT).show();
+                                        Intent i = new Intent(EditProfile.this, LoginActivity.class);
+                                        startActivity(i);
+
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+                            }
+                        });
+                    }else {
+                        Toast.makeText(EditProfile.this, "Your password does not match.", Toast.LENGTH_SHORT).show();
                     }
-                    }
-                });
+                }else {
+                    Toast.makeText(EditProfile.this, "Please enter your new password.", Toast.LENGTH_SHORT).show();
+                }
+
 
 
             }

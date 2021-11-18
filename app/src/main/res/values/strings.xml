@@ -7,6 +7,7 @@
     <string name="logo_app">Logo</string>
     <string name="main_bg">Background</string>
     <string name="main_wc_txt">Welcome Foodies</string>
+    <string name="profile_wc">Welcome</string>
     <string name="welcome">For Foodies By Foodies</string>
     <string name="log_in">LOG IN</string>
     <string name="register">Register</string>
