@@ -66,9 +66,7 @@ public class ProfileActivity extends AppCompatActivity {
         email = intent.getStringExtra("email");
 
 
-//        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
-//        DatabaseReference userRef = rootRef.child(USERS);
-//        Log.v("USERID", userRef.getKey());
+
 
 //        Bind impostors
 
@@ -84,11 +82,6 @@ public class ProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         fuser = mAuth.getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference("user");
-        storageReference = FirebaseStorage.getInstance().getReference("users");
-
-
-
-
 
 
         // Read from the database
@@ -131,104 +124,5 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
-//
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == 1000 && resultCode == RESULT_OK && data.getData() !=null){
-//            onfoff.setVisibility(View.GONE);
-//            {
-//                url = data.getData();
-////                Picasso.get().load(url).into(userImageView);
-//
-//
-//                userImageView.setImageURI(url);
-//                uploadImageToFirebaseReal(url);
-//
-////                uploadImageToFirebaseReal(url);
-//
-//            }
-//        }
-//    }
-//    private void uploadImageToFirebaseReal(Uri uri){
-//        StorageReference reference = storageReference.child("users/"+mAuth.getCurrentUser().getUid()+"."+getExt(url));
-//         reference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                    @Override
-//                    public void onSuccess(Uri uri) {
-//
-//
-//
-//
-//
-//
-//
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        reference.delete();
-//                    }
-//                });
-//
-//            }
-//        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-//
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception e) {
-//
-//            }
-//        });
-//    }
-//
-//
-//    private String getExt(Uri uri){
-//        ContentResolver resolver = getContentResolver();
-//        MimeTypeMap mime = MimeTypeMap.getSingleton();
-//        return mime.getExtensionFromMimeType(resolver.getType(uri));
-//    }
 
-//    private void uploadImageToFirebase(Uri url) {
-////        Upload Image to Firebase Storage
-//
-//        final StorageReference fileRef = storageReference.child("users/"+mAuth.getCurrentUser().getUid()+".jpg");
-//        fileRef.putFile(url).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//            @Override
-//            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//                onfoff.setVisibility(View.GONE);
-//                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                    @Override
-//                    public void onSuccess(Uri uri) {
-//
-//
-//                        user = new User(uri.toString());
-//                        mDatabase.child(fuser.getUid()).child("imageUrl").setValue(uri.toString());
-////                        String keyId = mDatabase.push().getKey();
-////                        mDatabase.child(keyId).setValue(user);
-//
-//
-//
-//                        Picasso.get().load(url).into(userImageView);
-//
-//
-//                    }
-//                });
-//            }
-//        })
-//    }
-//    public void  updateUI(FirebaseUser currentUser){
-//
-//
-//
-//
-//
-//
-//    }
 }

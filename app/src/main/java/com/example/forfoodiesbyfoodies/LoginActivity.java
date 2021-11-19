@@ -182,20 +182,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
-
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (mAuthListener != null) {
-            mAuth.removeAuthStateListener(mAuthListener);
-        }
-    }
-    @Override
     protected void onResume() {
         super.onResume();
         // Check if user is signed in (non-null) and update UI accordingly.

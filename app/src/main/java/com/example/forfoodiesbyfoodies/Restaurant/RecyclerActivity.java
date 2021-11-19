@@ -114,18 +114,13 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 
         });
 
-            if (AppClass.Session.user.getUserType().compareTo("consieur")==0){
+            if (AppClass.Session.user.getUserType().compareTo("admin")==0){
                 add_rest.setVisibility(View.VISIBLE);
             }else{
                 add_rest.setVisibility(View.INVISIBLE);
             }
 
-//            if(user"critic".compareTo("critic")==0)
-//            {
-//                sortbtn.setVisibility(View.VISIBLE);
-//            }else{
-//                sortbtn.setVisibility(View.INVISIBLE);
-//            }
+
 //
 //        if(rest.isCanBook()){
 //            button3.setVisibility(View.VISIBLE);

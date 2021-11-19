@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.forfoodiesbyfoodies.App.AppClass;
@@ -39,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         private DatabaseReference mDatabase;
         private StorageReference mStorage;
         private FirebaseDatabase firebaseDatabase;
-        TextView welcometxt;
 
         private FirebaseAuth mAuth;
         private FirebaseAuth.AuthStateListener mAuthListener;
@@ -47,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         private String email;
 
     private static final String USERS = "user";
-//    List<User> userList =  new ArrayList<>();
+
 
 
 
@@ -62,8 +60,7 @@ public class MainActivity extends AppCompatActivity {
         profile = findViewById(R.id.main_user_imageview2);
         imglog = findViewById(R.id.main_onoff2);
         mAuth = FirebaseAuth.getInstance();
-        welcometxt = findViewById(R.id.welcometxt);
-
+        mDatabase = FirebaseDatabase.getInstance().getReference("user");
 
         if(mAuth.getCurrentUser() != null){
             updateUI(mAuth.getCurrentUser());
@@ -72,32 +69,18 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
 
+        if(AppClass.Session.user.getImageUrl()!= null){
+            Picasso.get().load(AppClass.Session.user.getImageUrl()).fit().into(profile);
+            imglog.setVisibility(View.INVISIBLE);
+        }else {
+            imglog.setVisibility(View.VISIBLE);
+        }
 
 
 
 
-//        FirebaseDatabase.getInstance().getReference("user").addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for(DataSnapshot dss: snapshot.getChildren()){
-//                    User user = dss.getValue(User.class);
-//                    userList.add(user);
-//                    Picasso.get().load(user.getImageUrl()).fit().into(profile);
-//                    imglog.setVisibility(View.INVISIBLE);
-//
-//
-//
-//                }
-//
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//
-//        });
+
+
 
 
 
@@ -108,18 +91,18 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         });
 
-        mAuthListener = new FirebaseAuth.AuthStateListener(){
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
-                mUser = firebaseAuth.getCurrentUser();
-
-                if(mUser != null){
-                    Toast.makeText(MainActivity.this,"Signed In", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(MainActivity.this,"Not Signed In", Toast.LENGTH_SHORT).show();
-                }
-            }
-        };
+//        mAuthListener = new FirebaseAuth.AuthStateListener(){
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
+//                mUser = firebaseAuth.getCurrentUser();
+//
+//                if(mUser != null){
+//                    Toast.makeText(MainActivity.this,"Signed In", Toast.LENGTH_SHORT).show();
+//                }else{
+//                    Toast.makeText(MainActivity.this,"Not Signed In", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        };
 
 //   Profile Activity Image View
         profile.setOnClickListener(new View.OnClickListener() {

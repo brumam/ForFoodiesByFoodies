@@ -109,6 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
         btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String email = reg_input_email.getText().toString();
                 String password = reg_input_pw.getText().toString();
                 String confirmpw = reg_confirm_pw.getText().toString();
@@ -122,6 +123,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) && url == null) {
                     Toast.makeText(getApplicationContext(), "Please complete the register account", Toast.LENGTH_LONG).show();
+
                     return;
                 }
 
@@ -130,51 +132,73 @@ public class RegisterActivity extends AppCompatActivity {
                     if (password.equals(confirmpw)) {
                         //are equal
 
-                        String name = mAuth.getCurrentUser().getUid();
-                        StorageReference reference = storageReference.child(name+"."+getExt(url));
-                        reference.putFile(url).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        mAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        String downloadUrl = uri.toString();
-                                        DatabaseReference newPost = mDatabase.child(name);
+                            public void onSuccess(AuthResult authResult) {
+                                if(authResult != null){
+                                    progressBar.setVisibility(View.VISIBLE);
+                                    String name = mAuth.getCurrentUser().getUid();
+                                    StorageReference reference = storageReference.child(name+"."+getExt(url));
+                                    reference.putFile(url).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                        @Override
+                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                            reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                @Override
+                                                public void onSuccess(Uri uri) {
+                                                    try{
+                                                        Thread.sleep(1000);
+                                                        progressBar.setVisibility(View.GONE);
+                                                        Toast.makeText(RegisterActivity.this,"User registered successfully.",Toast.LENGTH_SHORT).show();
+                                                    } catch (InterruptedException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                    String downloadUrl = uri.toString();
 
-                                        Map<String, String> dataToSave = new HashMap<>();
-                                        dataToSave.put("email", reg_input_email.getText().toString());
-                                        dataToSave.put("firstName", reg_input_fn.getText().toString());
-                                        dataToSave.put("lastName", reg_input_sn.getText().toString());
-                                        dataToSave.put("imageUrl", downloadUrl);
-                                        dataToSave.put("userType","user");
-                                        newPost.setValue(dataToSave);
+                                                    DatabaseReference currentUserDb = mDatabase.child(name);
+                                                    currentUserDb.child("email").setValue(reg_input_email.getText().toString());
+                                                    currentUserDb.child("firstName").setValue(reg_input_fn.getText().toString());
+                                                    currentUserDb.child("lastName").setValue(reg_input_sn.getText().toString());
+                                                    currentUserDb.child("imageUrl").setValue(downloadUrl);
+                                                    currentUserDb.child("userType").setValue("user");
+
+                                                    Intent i = new Intent(RegisterActivity.this,LoginActivity.class);
+                                                    startActivity(i);
 
 
-                                        registerUser(email, password);
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        reference.delete();
-                                    }
-                                });
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    reference.delete();
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
+                                try{
+                                    Thread.sleep(1000);
+                                    progressBar.setVisibility(View.GONE);
 
+                                    Toast.makeText(RegisterActivity.this, " Your email is already registered.  ",Toast.LENGTH_SHORT).show();
+                                } catch (InterruptedException interruptedException) {
+                                    interruptedException.printStackTrace();
+                                }
                             }
                         });
-
-
 
                     } else {
                         //are different
                         Toast.makeText(RegisterActivity.this, "Password do not match", Toast.LENGTH_LONG).show();
+
                         return;
                     }
                 }else{
                     Toast.makeText(RegisterActivity.this, "Please upload your profile picture", Toast.LENGTH_SHORT).show();
+
                     return;
                 }
 
@@ -209,47 +233,6 @@ public class RegisterActivity extends AppCompatActivity {
         ContentResolver resolver = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(resolver.getType(uri));
-    }
-
-    //    Register function to create user in Firebase - Error messages and Toast for successfully or not
-    private void registerUser(String email, String password){
-        progressBar.setVisibility(View.VISIBLE);
-        mAuth.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>(){
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task){
-                        if(task.isSuccessful()){
-                            try{
-                                Thread.sleep(1000);
-
-                            progressBar.setVisibility(View.GONE);
-                            Toast.makeText(RegisterActivity.this,"User registered successfully.",Toast.LENGTH_SHORT).show();
-
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }else{
-                            try {
-                                Thread.sleep(3000);
-
-                            progressBar.setVisibility(View.GONE);
-
-                            Toast.makeText(RegisterActivity.this, " Your email is already registered.  ",Toast.LENGTH_SHORT).show();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                });
-    }
-
-    public void  updateUI(FirebaseUser currentUser){
-        String keyId = mAuth.getCurrentUser().getUid();
-        mDatabase.child(keyId).setValue(user);
-        Intent loginIntent = new Intent(this, LoginActivity.class);
-        startActivity(loginIntent);
     }
 
 
