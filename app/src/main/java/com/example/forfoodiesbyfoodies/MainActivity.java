@@ -132,15 +132,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     //  If statement on start to check if the user is already logged into app or if he is not redirect to LoginActivity-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        mAuth.addAuthStateListener(mAuthListener);
-        if (currentUser == null){
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-        }
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        mAuth.addAuthStateListener(mAuthListener);
+//        if (currentUser == null){
+//            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+//        }
+//    }
     public void updateUI(FirebaseUser currentUser) {
         Intent profileIntent = new Intent(getApplicationContext(), ProfileActivity.class);
         profileIntent.putExtra("email", currentUser.getEmail());
