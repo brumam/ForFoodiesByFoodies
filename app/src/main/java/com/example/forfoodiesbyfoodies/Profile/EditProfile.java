@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.forfoodiesbyfoodies.App.AppClass;
@@ -35,12 +36,15 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 public class EditProfile extends AppCompatActivity {
 
     public static final String TAG = "TAG";
     EditText edit_password, confirm_pw;
     ImageView edit_user_imageview, edit_on_off;
     Button edit_save;
+
 
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
@@ -49,6 +53,8 @@ public class EditProfile extends AppCompatActivity {
     DatabaseReference mDatabase;
     Uri url;
     ProgressBar progressBar;
+
+    String tests;
 
 
 
@@ -64,6 +70,9 @@ public class EditProfile extends AppCompatActivity {
         edit_save = findViewById(R.id.edit_save);
         progressBar = findViewById(R.id.edit_progress);
         edit_on_off = findViewById(R.id.edit_onoff);
+
+
+
 
 
         storageReference = FirebaseStorage.getInstance().getReference();

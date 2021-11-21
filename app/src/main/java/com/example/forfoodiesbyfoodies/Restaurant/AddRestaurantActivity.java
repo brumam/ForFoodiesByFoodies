@@ -125,6 +125,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
                             dataToSave.put("name", titleVal);
                             dataToSave.put("description", descVal);
                             dataToSave.put("imageURL", downloadUrl);
+                            dataToSave.put("bookingURL","BookingLink");
 
 
                             newPost.setValue(dataToSave);

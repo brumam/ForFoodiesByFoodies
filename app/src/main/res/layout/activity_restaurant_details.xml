@@ -9,9 +9,10 @@
 
     <ImageView
         android:id="@+id/iv2"
-        android:layout_width="229dp"
-        android:layout_height="142dp"
+        android:layout_width="284dp"
+        android:layout_height="140dp"
         android:layout_marginTop="148dp"
+        android:contentDescription="@string/logo_app"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,8 +21,8 @@
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="371dp"
-        android:layout_height="39dp"
+        android:layout_width="374dp"
+        android:layout_height="48dp"
         android:layout_marginTop="12dp"
         android:fontFamily="serif"
         android:hint="Restaurant"
@@ -37,9 +38,9 @@
 
     <TextView
         android:id="@+id/tvDesc"
-        android:layout_width="319dp"
-        android:layout_height="208dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="288dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="serif"
         android:hint="Description...."
         android:lineSpacingExtra="8sp"
@@ -54,34 +55,63 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv2" />
 
+    <WebView
+        android:id="@+id/id_wv"
+        android:layout_width="393dp"
+        android:layout_height="125dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="220dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginBottom="17dp"
+        android:background="@drawable/btn_bg"
         android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="164dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="27dp"
+        android:background="@drawable/btn_bg"
         android:text="Button"
+        app:layout_constraintEnd_toStartOf="@+id/btn_booking"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/id_wv" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_booking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Button"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/btn_bg"
+        android:text="Booking"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
+        app:layout_constraintTop_toBottomOf="@+id/id_wv" />
+
+    <TextView
+        android:id="@+id/bookingURL"
+        android:layout_width="327dp"
+        android:layout_height="148dp"
+        android:text="TextView"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

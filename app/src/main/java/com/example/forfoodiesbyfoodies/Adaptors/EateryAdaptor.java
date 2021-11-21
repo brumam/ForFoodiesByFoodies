@@ -1,5 +1,6 @@
 package com.example.forfoodiesbyfoodies.Adaptors;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.forfoodiesbyfoodies.Helpers.Restaurant;
 import com.example.forfoodiesbyfoodies.R;
 
+import com.example.forfoodiesbyfoodies.Restaurant.WebActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class EateryAdaptor extends RecyclerView.Adapter<EateryAdaptor.EateryHolder> {
 
-    List<Restaurant> userList;
+    List<Restaurant> restList;
 
     EateryHolder.RestaurantInterface listener;
 
-    public EateryAdaptor(List<Restaurant> userList, EateryHolder.RestaurantInterface _listener) {
-        this.userList = userList;
+    public EateryAdaptor(List<Restaurant> restList, EateryHolder.RestaurantInterface _listener) {
+        this.restList = restList;
         listener = _listener;
     }
 
@@ -36,13 +38,15 @@ public class EateryAdaptor extends RecyclerView.Adapter<EateryAdaptor.EateryHold
 
     @Override
     public void onBindViewHolder(@NonNull EateryHolder holder, int position) {
-        holder.tv.setText(userList.get(position).getName());
-        Picasso.get().load(userList.get(position).getImageURL()).fit().into(holder.iv);
+        holder.tv.setText(restList.get(position).getName());
+        Picasso.get().load(restList.get(position).getImageURL()).fit().into(holder.iv);
+
+
     }
 
     @Override
     public int getItemCount() {
-        return userList.size();
+        return restList.size();
     }
 
     public static class EateryHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
@@ -56,6 +60,8 @@ public class EateryAdaptor extends RecyclerView.Adapter<EateryAdaptor.EateryHold
             tv = itemView.findViewById(R.id.tv_card_name);
             listener = _listener;
             itemView.setOnClickListener(this);
+
+
         }
 
         @Override

@@ -39,7 +39,7 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
         RecyclerView rv;
         EateryAdaptor adapter;
         Button add_rest;
-        TextView userTypes;
+
         private String TAG = "user";
 
         DatabaseReference mDatabase;
@@ -54,21 +54,20 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 
 
 
-
-        @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
 
 
             add_rest = findViewById(R.id.add_restaurant);
-            userTypes = findViewById(R.id.userType);
+
 
 
             mAuth = FirebaseAuth.getInstance();
             fUser = mAuth.getCurrentUser();
             mDatabase = FirebaseDatabase.getInstance().getReference("user");
-            userTypes.setText(AppClass.Session.user.getUserType());
+
 
 
 
@@ -91,7 +90,6 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
                 for(DataSnapshot dss: snapshot.getChildren()){
                     Restaurant rest = dss.getValue(Restaurant.class);
                     restList.add(rest);
-
 
                    }
 
@@ -119,6 +117,7 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
             }else{
                 add_rest.setVisibility(View.INVISIBLE);
             }
+
 
 
 //
