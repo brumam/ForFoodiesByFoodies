@@ -12,11 +12,16 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.forfoodiesbyfoodies.App.AppClass;
 import com.example.forfoodiesbyfoodies.Helpers.Restaurant;
 import com.example.forfoodiesbyfoodies.Profile.ProfileActivity;
 import com.example.forfoodiesbyfoodies.R;
+import com.example.forfoodiesbyfoodies.ReviewsRest.AddReviewRest;
+import com.example.forfoodiesbyfoodies.ReviewsRest.ReviewList;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -30,9 +35,10 @@ public class RestaurantDetails extends AppCompatActivity {
 
 
     ImageView rest_img;
-    TextView rest_desc, rest_name;
+    TextView rest_desc, rest_name,db;
     TextView bookingURL;
-    Button btnbook;
+    Button btnbook, review, viewreview;
+    DatabaseReference dbref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +51,17 @@ public class RestaurantDetails extends AppCompatActivity {
         rest_name = findViewById(R.id.tvName);
         btnbook = findViewById(R.id.btn_booking);
         bookingURL = findViewById(R.id.bookingURL);
+        review = findViewById(R.id.add_review);
+        viewreview = findViewById(R.id.rest_btn_viewrev);
+        db = findViewById(R.id.db_ref);
 
 
         Intent i = getIntent();
 
         Restaurant rest = i.getParcelableExtra("Restaurant");
+        dbref = FirebaseDatabase.getInstance().getReference("Restaurants");
+
+
 
 
         Picasso.get().load(rest.getImageURL()).fit().into(rest_img);
@@ -64,6 +76,23 @@ public class RestaurantDetails extends AppCompatActivity {
 
 
 
+
+        review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent rev = new Intent(RestaurantDetails.this, AddReviewRest.class);
+                startActivity(rev);
+            }
+        });
+
+        viewreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent viewrev = new Intent(RestaurantDetails.this, ReviewList.class);
+
+                startActivity(viewrev);
+            }
+        });
 
 
 

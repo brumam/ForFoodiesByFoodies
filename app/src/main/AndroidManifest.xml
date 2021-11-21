@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.forfoodiesbyfoodies" >
+    package="com.example.forfoodiesbyfoodies">
     <!-- We add permission for app to access INTERNET -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -17,7 +17,13 @@
         android:roundIcon="@mipmap/logo_app_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Forfoodiesbyfoodies"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ReviewsRest.ReviewList"
+            android:exported="false" />
+        <activity
+            android:name=".ReviewsRest.AddReviewRest"
+            android:exported="false" />
         <activity
             android:name=".Restaurant.WebActivity"
             android:exported="false" />
@@ -45,7 +51,7 @@
         <activity android:name=".ForgotActivity" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

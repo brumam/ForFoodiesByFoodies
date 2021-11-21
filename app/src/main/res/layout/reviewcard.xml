@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="135dp"
+    android:layout_marginLeft="50dp"
+    android:layout_marginTop="18dp"
+    android:layout_marginRight="50dp"
+    android:background="@drawable/shadowbtn"
+    android:elevation="10dp"
+    app:cardCornerRadius="25sp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="135dp">
+
+        <TextView
+            android:id="@+id/rev_review"
+            android:layout_width="201dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="36dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.36"
+            app:layout_constraintStart_toEndOf="@+id/rev_prof"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/rev_prof"
+            android:layout_width="49dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/rev_fn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rev_prof"
+            app:layout_constraintVertical_bias="0.062" />
+
+        <TextView
+            android:id="@+id/rev_sn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginBottom="60dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rev_fn"
+            app:layout_constraintTop_toBottomOf="@+id/rev_review" />
+
+        <RatingBar
+            android:id="@+id/rev_rating"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="79dp"
+            android:layout_height="23dp"
+            android:indeterminate="false"
+            android:numStars="5"
+            android:stepSize="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.78"
+            app:layout_constraintStart_toEndOf="@+id/rev_sn"
+            app:layout_constraintTop_toBottomOf="@+id/rev_review"
+            app:layout_constraintVertical_bias="0.076" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

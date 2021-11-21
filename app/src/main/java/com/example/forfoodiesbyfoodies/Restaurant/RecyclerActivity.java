@@ -93,6 +93,8 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 
 
 
+
+
                    }
 
                 adapter = new EateryAdaptor(restList, RecyclerActivity.this);
@@ -115,11 +117,11 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 
         });
 
-            if (AppClass.Session.user.getUserType().compareTo("admin")==0){
-                add_rest.setVisibility(View.VISIBLE);
-            }else{
-                add_rest.setVisibility(View.INVISIBLE);
-            }
+//            if (AppClass.Session.user.getUserType().compareTo("admin")==0){
+//                add_rest.setVisibility(View.VISIBLE);
+//            }else{
+//                add_rest.setVisibility(View.INVISIBLE);
+//            }
 
 
 
@@ -140,10 +142,10 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
     public void onRestaurantClick(int i) {
         Intent intent = new Intent(RecyclerActivity.this, RestaurantDetails.class);
         intent.putExtra("Restaurant", restList.get(i));
+
         startActivity(intent);
 
-//        Intent is = new Intent(RecyclerActivity.this,WebActivity.class);
-//        is.putExtra("key",restList.get(i));
+
 
 
     }

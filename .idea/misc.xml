@@ -34,6 +34,7 @@
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/activity_add_new_restaurant.xml" value="0.32592592592592595" />
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/activity_add_restaurant.xml" value="0.34444444444444444" />
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/activity_add_restaurant2.xml" value="0.34444444444444444" />
+        <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/activity_add_review_rest.xml" value="0.32222222222222224" />
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/activity_admin_add_restaurant.xml" value="0.33194444444444443" />
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/activity_booking.xml" value="0.32222222222222224" />
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/activity_edit_profile.xml" value="0.3296296296296296" />
@@ -47,9 +48,12 @@
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/activity_register.xml" value="0.2549019607843137" />
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/activity_restaurant.xml" value="0.33" />
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/activity_restaurant_details.xml" value="0.34444444444444444" />
+        <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/activity_review_list.xml" value="0.32222222222222224" />
+        <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/activity_review_recycler.xml" value="0.32222222222222224" />
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/activity_web.xml" value="0.32222222222222224" />
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/add_row.xml" value="0.34444444444444444" />
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/eaterycard.xml" value="0.5" />
+        <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/layout/reviewcard.xml" value="0.32222222222222224" />
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.19722222222222222" />
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.19722222222222222" />
         <entry key="..\:/Users/Unknown/AndroidStudioProjects/forfoodiesbyfoodies/app/src/main/res/mipmap-anydpi-v26/logo_app.xml" value="0.19722222222222222" />

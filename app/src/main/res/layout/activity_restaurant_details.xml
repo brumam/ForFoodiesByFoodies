@@ -7,6 +7,20 @@
     android:background="@drawable/bgmenuphone"
     tools:context=".Restaurant.RestaurantDetails">
 
+    <RatingBar
+        android:id="@+id/ratingBar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:numStars="5"
+        android:progressBackgroundTint="@android:color/background_light"
+        android:stepSize="0.1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <ImageView
         android:id="@+id/iv2"
         android:layout_width="284dp"
@@ -30,71 +44,53 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorPrimary"
         android:textColorHint="@color/colorPrimary"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv2" />
 
-    <TextView
-        android:id="@+id/tvDesc"
-        android:layout_width="307dp"
-        android:layout_height="208dp"
-        android:layout_marginTop="80dp"
-        android:fontFamily="serif"
-        android:hint="Description...."
-        android:lineSpacingExtra="8sp"
-        android:padding="10dp"
-        android:textAlignment="viewStart"
-        android:textColor="@color/colorPrimary"
-        android:textColorHint="@color/colorPrimary"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        android:typeface="normal"
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="372dp"
+        android:layout_height="199dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="4dp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.705"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv2" />
+        app:layout_constraintTop_toBottomOf="@+id/tvName">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginBottom="17dp"
-        android:background="@drawable/btn_bg"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        tools:ignore="DuplicateSpeakableTextCheck" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="27dp"
-        android:background="@drawable/btn_bg"
-        android:text="Button"
-        app:layout_constraintEnd_toStartOf="@+id/btn_booking"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
+            <TextView
+                android:id="@+id/tvDesc"
+                android:layout_width="357dp"
+                android:layout_height="346dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginEnd="11dp"
+                android:fontFamily="serif"
+                android:hint="Description...."
+                android:lineSpacingExtra="8sp"
+                android:padding="10dp"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:typeface="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.428"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/btn_booking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/btn_bg"
-        android:text="Booking"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toEndOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/tvDesc" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <TextView
         android:id="@+id/bookingURL"
@@ -106,4 +102,64 @@
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/add_review"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="63dp"
+        android:background="@drawable/btn_bg"
+        android:text="Add Review"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_booking"
+        app:layout_constraintStart_toEndOf="@+id/rest_btn_viewrev"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <Button
+        android:id="@+id/btn_booking"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="63dp"
+        android:background="@drawable/btn_bg"
+        android:text="Booking"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <Button
+        android:id="@+id/rest_btn_viewrev"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="63dp"
+        android:background="@drawable/btn_bg"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+
+    <TextView
+        android:id="@+id/db_ref"
+        android:layout_width="329dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="8dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_review" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

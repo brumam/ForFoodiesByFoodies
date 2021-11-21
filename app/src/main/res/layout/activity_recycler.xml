@@ -7,42 +7,20 @@
     android:background="@drawable/bgmenuphone"
     tools:context=".Restaurant.RecyclerActivity">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="225dp"
-        android:layout_height="113dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="83dp"
-        android:contentDescription="TODO"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/btn_bg" />
-
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="352dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="152dp"
+        android:fontFamily="serif"
         android:text="@string/welcome_restaurant"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.477"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rest_logo" />
-
-    <ImageView
-        android:id="@+id/rest_logo"
-        android:layout_width="234dp"
-        android:layout_height="109dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/logo_app"
-        android:src="@drawable/logo_app"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
