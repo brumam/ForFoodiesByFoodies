@@ -1,5 +1,6 @@
 package com.example.forfoodiesbyfoodies.Adaptors;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.forfoodiesbyfoodies.Helpers.Restaurant;
 import com.example.forfoodiesbyfoodies.R;
 
+import com.example.forfoodiesbyfoodies.Restaurant.RecyclerActivity;
 import com.example.forfoodiesbyfoodies.Restaurant.WebActivity;
 import com.squareup.picasso.Picasso;
 
@@ -22,12 +24,17 @@ public class EateryAdaptor extends RecyclerView.Adapter<EateryAdaptor.EateryHold
 
     List<Restaurant> restList;
 
+
+
     EateryHolder.RestaurantInterface listener;
 
     public EateryAdaptor(List<Restaurant> restList, EateryHolder.RestaurantInterface _listener) {
         this.restList = restList;
         listener = _listener;
+
     }
+
+
 
     @NonNull
     @Override
@@ -40,6 +47,8 @@ public class EateryAdaptor extends RecyclerView.Adapter<EateryAdaptor.EateryHold
     public void onBindViewHolder(@NonNull EateryHolder holder, int position) {
         holder.tv.setText(restList.get(position).getName());
         Picasso.get().load(restList.get(position).getImageURL()).fit().into(holder.iv);
+
+
 
 
     }
@@ -71,6 +80,7 @@ public class EateryAdaptor extends RecyclerView.Adapter<EateryAdaptor.EateryHold
 
         public interface RestaurantInterface{
             public void onRestaurantClick(int i);
+
         }
     }
 }

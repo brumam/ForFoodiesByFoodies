@@ -91,9 +91,12 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
                     Restaurant rest = dss.getValue(Restaurant.class);
                     restList.add(rest);
 
+
+
                    }
 
                 adapter = new EateryAdaptor(restList, RecyclerActivity.this);
+
                 rv.setAdapter(adapter);
                 Collections.sort(restList, new Comparator<Restaurant>() {
                     @Override
@@ -138,5 +141,10 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
         Intent intent = new Intent(RecyclerActivity.this, RestaurantDetails.class);
         intent.putExtra("Restaurant", restList.get(i));
         startActivity(intent);
+
+//        Intent is = new Intent(RecyclerActivity.this,WebActivity.class);
+//        is.putExtra("key",restList.get(i));
+
+
     }
 }

@@ -19,9 +19,15 @@ import com.example.forfoodiesbyfoodies.Profile.ProfileActivity;
 import com.example.forfoodiesbyfoodies.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class RestaurantDetails extends AppCompatActivity {
-    WebView wv;
+
+
+    List<Restaurant> restList;
+
 
     ImageView rest_img;
     TextView rest_desc, rest_name;
@@ -32,8 +38,7 @@ public class RestaurantDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_details);
 
-        wv = findViewById(R.id.id_wv);
-        wv.setWebViewClient(new WebViewClient());
+
 
         rest_img = findViewById(R.id.iv2);
         rest_desc = findViewById(R.id.tvDesc);
@@ -54,12 +59,7 @@ public class RestaurantDetails extends AppCompatActivity {
 
         String url = bookingURL.getText().toString();
 
-        wv.loadUrl(url);
 
-        WebSettings settings = wv.getSettings();
-        settings.setLoadWithOverviewMode(true);
-        settings.setUseWideViewPort(true);
-        settings.setJavaScriptEnabled(true);
 
 
 
@@ -71,21 +71,14 @@ public class RestaurantDetails extends AppCompatActivity {
         btnbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent books = new Intent(RestaurantDetails.this,WebActivity.class);
-                books.putExtra("BOOKs",rest_name.getText().toString());
-                startActivity(books);
+                Intent is = new Intent(RestaurantDetails.this,WebActivity.class);
+                is.putExtra("key",bookingURL.getText().toString());
+                startActivity(is);
             }
         });
 
     }
-    @Override
-    public void onBackPressed() {
-        if(wv.canGoBack()){
-            wv.goBack();
-        } else {
-            super.onBackPressed();
-        }
 
 
-    }
+
 }
