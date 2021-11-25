@@ -51,7 +51,7 @@
     <string name="write_your_review">Write your review...</string>
     <string name="please_add_your_review">Please add your review</string>
     <string name="submit">Submit</string>
-
+    <string name="title_activity_maps">MapsActivity</string>
 
 
 </resources>

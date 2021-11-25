@@ -42,7 +42,7 @@ public class AddStreetFoodActivity extends AppCompatActivity {
     private CheckBox veggy;
     private EditText mPostTitle;
     private EditText mPostDesc;
-    private Button mSubmitButton;
+    private Button mSubmitButton,location;
     private StorageReference mStorage;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
@@ -69,6 +69,7 @@ public class AddStreetFoodActivity extends AppCompatActivity {
         mPostTitle = findViewById(R.id.street_postTitleEt);
         mPostDesc = findViewById(R.id.street_descriptionEt);
         mSubmitButton = findViewById(R.id.street_submitPost);
+        location = findViewById(R.id.str_add_loc);
         veggy = findViewById(R.id.checkBox);
 
 
@@ -85,6 +86,14 @@ public class AddStreetFoodActivity extends AppCompatActivity {
             }
         });
 
+
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddStreetFoodActivity.this,MapsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         mPostImage.setOnClickListener(new View.OnClickListener() {
             @Override

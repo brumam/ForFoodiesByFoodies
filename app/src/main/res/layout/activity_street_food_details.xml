@@ -82,32 +82,46 @@
         android:id="@+id/street_add_review"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="71dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginBottom="113dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="35dp"
         android:background="@drawable/btn_bg"
         android:text="Add Review"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/street_rest_btn_viewrev"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/street_scrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <Button
         android:id="@+id/street_rest_btn_viewrev"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="71dp"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="113dp"
+        android:layout_marginTop="149dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="35dp"
         android:background="@drawable/btn_bg"
         android:text="View Reviews"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/street_scrollView2" />
 
+    <Button
+        android:id="@+id/str_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="37dp"
+        android:background="@drawable/btn_bg"
+        android:text="Location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/street_rest_btn_viewrev"
+        app:layout_constraintStart_toEndOf="@+id/street_add_review"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="156dp"
         android:layout_height="40dp"
         android:layout_marginStart="36dp"
@@ -135,6 +149,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
