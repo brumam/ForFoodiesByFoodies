@@ -35,7 +35,7 @@ public class RestaurantDetails extends AppCompatActivity {
 
 
     ImageView rest_img;
-    TextView rest_desc, rest_name,db;
+    TextView rest_desc, rest_name;
     TextView bookingURL;
     Button btnbook, review, viewreview;
     DatabaseReference dbref;
@@ -53,7 +53,7 @@ public class RestaurantDetails extends AppCompatActivity {
         bookingURL = findViewById(R.id.bookingURL);
         review = findViewById(R.id.add_review);
         viewreview = findViewById(R.id.rest_btn_viewrev);
-        db = findViewById(R.id.db_ref);
+
 
 
         Intent i = getIntent();
@@ -73,7 +73,11 @@ public class RestaurantDetails extends AppCompatActivity {
 
 
 
-
+        if(AppClass.Session.user.getUserType().compareTo("user") ==0){
+            review.setVisibility(View.INVISIBLE);
+        }else{
+            review.setVisibility(View.VISIBLE);
+        }
 
 
 

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_streetfood"
+    tools:context=".StreetFood.AddStreetFoodActivity">
+
+    <ImageButton
+        android:id="@+id/street_imageButton"
+        android:layout_width="248dp"
+        android:layout_height="202dp"
+        android:layout_marginTop="28dp"
+        android:background="@mipmap/add_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/street_postTitleEt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/input_bg"
+        android:ems="10"
+        android:hint="@string/street_name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/street_imageButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/street_imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/street_imageButton" />
+
+    <EditText
+        android:id="@+id/street_descriptionEt"
+        android:layout_width="300dp"
+        android:layout_height="147dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/square_btn"
+        android:ems="10"
+        android:hint="@string/street_description"
+        android:inputType="textPersonName"
+        android:padding="15dp"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textColorHint="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/street_submitPost"
+        app:layout_constraintEnd_toEndOf="@+id/street_postTitleEt"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/street_postTitleEt"
+        app:layout_constraintTop_toBottomOf="@+id/street_postTitleEt"
+        app:layout_constraintVertical_bias="0.006" />
+
+    <Button
+        android:id="@+id/street_submitPost"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="88dp"
+        android:background="@drawable/btn_bg"
+        android:text="@string/submit_text"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/street_descriptionEt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/street_descriptionEt" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:buttonTint="@color/colorPrimary"
+        android:checked="false"
+        android:minHeight="48dp"
+        android:text="Vegetarian"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.184"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/street_descriptionEt" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

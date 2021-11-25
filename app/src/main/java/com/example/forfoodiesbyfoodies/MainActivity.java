@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.forfoodiesbyfoodies.App.AppClass;
@@ -18,6 +19,7 @@ import com.example.forfoodiesbyfoodies.Helpers.Restaurant;
 import com.example.forfoodiesbyfoodies.Helpers.User;
 import com.example.forfoodiesbyfoodies.Profile.ProfileActivity;
 import com.example.forfoodiesbyfoodies.Restaurant.RecyclerActivity;
+import com.example.forfoodiesbyfoodies.StreetFood.StreetRecyclerActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,8 +35,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 //    Declare Impostors
-        private Button main_log_out,main_rest;
+        private Button main_log_out,main_rest, main_street;
         private ImageView profile,imglog;
+
         private DatabaseReference mDatabase;
         private StorageReference mStorage;
         private FirebaseDatabase firebaseDatabase;
@@ -44,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         private FirebaseUser mUser;
         private String email;
 
-    private static final String USERS = "user";
+        private static final String USERS = "user";
 
 
 
@@ -57,8 +60,10 @@ public class MainActivity extends AppCompatActivity {
 // Bind them
         main_log_out = findViewById(R.id.main_log_out);
         main_rest = findViewById(R.id.main_restaurant);
+        main_street = findViewById(R.id.main_street_food);
         profile = findViewById(R.id.main_user_imageview2);
         imglog = findViewById(R.id.main_onoff2);
+
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("user");
 
@@ -75,12 +80,6 @@ public class MainActivity extends AppCompatActivity {
         }else {
             imglog.setVisibility(View.VISIBLE);
         }
-
-
-
-
-
-
 
 
 
@@ -104,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        };
 
+
 //   Profile Activity Image View
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,10 +122,20 @@ public class MainActivity extends AppCompatActivity {
         main_rest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, RecyclerActivity.class));
+                Intent intent = new Intent(MainActivity.this,RecyclerActivity.class);
+                startActivity(intent);
+
             }
         });
 
+
+        main_street.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, StreetRecyclerActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -141,12 +151,14 @@ public class MainActivity extends AppCompatActivity {
 //            startActivity(new Intent(MainActivity.this, LoginActivity.class));
 //        }
 //    }
+
     public void updateUI(FirebaseUser currentUser) {
         Intent profileIntent = new Intent(getApplicationContext(), ProfileActivity.class);
         profileIntent.putExtra("email", currentUser.getEmail());
         Log.v("DATA", currentUser.getUid());
 
     }
+
     @Override
     protected void onStop() {
         super.onStop();

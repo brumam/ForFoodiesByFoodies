@@ -19,6 +19,21 @@
         android:theme="@style/Theme.Forfoodiesbyfoodies"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".StreetFood.StreetRecyclerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReviewsStreet.ReviewStreetList"
+            android:exported="false" />
+        <activity
+            android:name=".ReviewsStreet.AddReviewStreet"
+            android:exported="false" />
+        <activity
+            android:name=".StreetFood.StreetFoodDetails"
+            android:exported="false" />
+        <activity
+            android:name=".StreetFood.AddStreetFoodActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReviewsRest.ReviewList"
             android:exported="false" />
         <activity

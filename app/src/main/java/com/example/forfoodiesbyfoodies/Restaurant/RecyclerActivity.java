@@ -15,10 +15,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.forfoodiesbyfoodies.Adaptors.EateryAdaptor;
+import com.example.forfoodiesbyfoodies.Adaptors.StreetFoodAdapter;
 import com.example.forfoodiesbyfoodies.App.AppClass;
 import com.example.forfoodiesbyfoodies.Helpers.Restaurant;
+import com.example.forfoodiesbyfoodies.Helpers.StreetFood;
 import com.example.forfoodiesbyfoodies.R;
 import com.example.forfoodiesbyfoodies.Helpers.User;
+import com.example.forfoodiesbyfoodies.StreetFood.AddStreetFoodActivity;
+import com.example.forfoodiesbyfoodies.StreetFood.StreetFoodDetails;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -54,6 +58,7 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,66 +76,59 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 
 
 
-
-
-
         add_rest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RecyclerActivity.this,AddRestaurantActivity.class);
+                Intent intent = new Intent(RecyclerActivity.this, AddRestaurantActivity.class);
                 startActivity(intent);
             }
         });
 
         rv = findViewById(R.id.rv_eatery);
         rv.setLayoutManager(new LinearLayoutManager(RecyclerActivity.this));
-        FirebaseDatabase.getInstance().getReference("Restaurants").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dss: snapshot.getChildren()){
-                    Restaurant rest = dss.getValue(Restaurant.class);
-                    restList.add(rest);
 
 
 
 
+            FirebaseDatabase.getInstance().getReference("Restaurants").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot dss: snapshot.getChildren()){
+                        Restaurant rest = dss.getValue(Restaurant.class);
+                        restList.add(rest);
 
-                   }
-
-                adapter = new EateryAdaptor(restList, RecyclerActivity.this);
-
-                rv.setAdapter(adapter);
-                Collections.sort(restList, new Comparator<Restaurant>() {
-                    @Override
-                    public int compare(Restaurant o1, Restaurant o2) {
-                        return o1.getName().compareTo(o2.getName());
                     }
 
-                });
-                adapter.notifyDataSetChanged();
+                    adapter = new EateryAdaptor(restList, RecyclerActivity.this);
+
+                    rv.setAdapter(adapter);
+                    Collections.sort(restList, new Comparator<Restaurant>() {
+                        @Override
+                        public int compare(Restaurant o1, Restaurant o2) {
+                            return o1.getName().compareTo(o2.getName());
+                        }
+
+                    });
+                    adapter.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+
+            });
+
+
+            if (AppClass.Session.user.getUserType().compareTo("admin")==0){
+                add_rest.setVisibility(View.VISIBLE);
+            }else{
+                add_rest.setVisibility(View.INVISIBLE);
             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-
-        });
-
-//            if (AppClass.Session.user.getUserType().compareTo("admin")==0){
-//                add_rest.setVisibility(View.VISIBLE);
-//            }else{
-//                add_rest.setVisibility(View.INVISIBLE);
-//            }
 
 
 
-//
-//        if(rest.isCanBook()){
-//            button3.setVisibility(View.VISIBLE);
-//        }else{
-//            button3.setVisibility(View.GONE);
-//        }
 
 
 
@@ -138,7 +136,7 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 
 
 
-    @Override
+
     public void onRestaurantClick(int i) {
         Intent intent = new Intent(RecyclerActivity.this, RestaurantDetails.class);
         intent.putExtra("Restaurant", restList.get(i));
@@ -149,4 +147,5 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 
 
     }
+
 }

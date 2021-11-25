@@ -6,7 +6,7 @@
     <string name="app_name">forfoodiesbyfoodies</string>
     <string name="logo_app">Logo</string>
     <string name="main_bg">Background</string>
-    <string name="main_wc_txt">Welcome Foodies</string>
+    <string name="main_wc_txt">Welcome Foodie</string>
     <string name="profile_wc">Welcome</string>
     <string name="welcome">For Foodies By Foodies</string>
     <string name="log_in">LOG IN</string>
@@ -44,6 +44,14 @@
     <string name="rest_description">Add Restaurant Description</string>
     <string name="submit_text">Submit</string>
     <string name="welcome_restaurant">Restaurants for Foodies</string>
+    <string name="street_description">Add Street Food Description</string>
+    <string name="street_name">Add Street Food stall Name</string>
+    <string name="add_new_street">Add new Stall</string>
+    <string name="street_food_head">Street Food Stalls</string>
+    <string name="write_your_review">Write your review...</string>
+    <string name="please_add_your_review">Please add your review</string>
+    <string name="submit">Submit</string>
+
 
 
 </resources>

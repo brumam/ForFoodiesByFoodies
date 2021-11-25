@@ -1,6 +1,5 @@
-package com.example.forfoodiesbyfoodies.ReviewsRest;
+package com.example.forfoodiesbyfoodies.ReviewsStreet;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,20 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.example.forfoodiesbyfoodies.App.AppClass;
 import com.example.forfoodiesbyfoodies.R;
 import com.example.forfoodiesbyfoodies.Restaurant.RecyclerActivity;
-import com.example.forfoodiesbyfoodies.Restaurant.RestaurantDetails;
+import com.example.forfoodiesbyfoodies.ReviewsRest.AddReviewRest;
+import com.example.forfoodiesbyfoodies.StreetFood.StreetRecyclerActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -29,9 +27,10 @@ import com.squareup.picasso.Picasso;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddReviewRest extends AppCompatActivity {
+public class AddReviewStreet extends AppCompatActivity {
     RatingBar ratingBar;
     EditText addreview;
+
 
     private StorageReference mStorage;
     private DatabaseReference mDatabase;
@@ -42,38 +41,41 @@ public class AddReviewRest extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_review_rest);
+        setContentView(R.layout.activity_add_review_street);
 
-//        initiate a rating bar
-        ratingBar = findViewById(R.id.ratingBar);
-        reviewbtn = findViewById(R.id.review_btn_submit);
-        addreview = findViewById(R.id.rev_et);
+        //        initiate a rating bar
+        ratingBar = findViewById(R.id.street_ratingBar);
+        reviewbtn = findViewById(R.id.street_review_btn_submit);
+        addreview = findViewById(R.id.street_rev_et);
+
 
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         mStorage = FirebaseStorage.getInstance().getReference("PROFILE_PIC_USERS");
 
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("Reviews");
+        mDatabase = FirebaseDatabase.getInstance().getReference("ReviewsStreet");
 
 
 
 
-        
+
+
+
+
         reviewbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int total = ratingBar.getNumStars();
-                
+
                 float ratedValue = ratingBar.getRating();
 
-                Toast.makeText(AddReviewRest.this, "Your rating:" + ratedValue + "/" + total, Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddReviewStreet.this, "Your rating:" + ratedValue + "/" + total, Toast.LENGTH_SHORT).show();
 
                 startReview();
 
             }
         });
-//
     }
 
     private void startReview(){
@@ -97,7 +99,7 @@ public class AddReviewRest extends AppCompatActivity {
 
         newPost.setValue(dataToSave);
 
-        startActivity(new Intent(AddReviewRest.this, RecyclerActivity.class));
+        startActivity(new Intent(AddReviewStreet.this, StreetRecyclerActivity.class));
 
 
     }
