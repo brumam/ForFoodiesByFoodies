@@ -20,7 +20,7 @@
             android:layout_width="201dp"
             android:layout_height="51dp"
             android:layout_marginTop="36dp"
-            android:text="TextView"
+            android:text="@string/textview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.36"
             app:layout_constraintStart_toEndOf="@+id/rev_prof"
@@ -32,8 +32,10 @@
             android:layout_height="52dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
+            android:contentDescription="@string/logo_app"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
@@ -42,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
+            android:text="@string/textview"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rev_prof"
@@ -53,10 +55,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="9dp"
-            android:layout_marginBottom="60dp"
-            android:text="TextView"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginBottom="23dp"
+            android:text="@string/textview"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/rev_rating"
             app:layout_constraintStart_toEndOf="@+id/rev_fn"
             app:layout_constraintTop_toBottomOf="@+id/rev_review" />
 

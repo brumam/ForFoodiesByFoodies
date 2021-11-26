@@ -36,7 +36,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
+
 
 public class EditProfile extends AppCompatActivity {
 //     Declare Impostors
@@ -54,7 +54,7 @@ public class EditProfile extends AppCompatActivity {
     Uri url;
     ProgressBar progressBar;
 
-    String tests;
+
 
 
 

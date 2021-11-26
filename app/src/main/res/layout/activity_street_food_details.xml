@@ -25,7 +25,7 @@
         android:layout_height="48dp"
         android:layout_marginTop="12dp"
         android:fontFamily="serif"
-        android:hint="Street Food"
+        android:hint="@string/street_food"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorPrimary"
@@ -59,7 +59,7 @@
                 android:layout_marginStart="11dp"
                 android:layout_marginEnd="11dp"
                 android:fontFamily="serif"
-                android:hint="Description...."
+                android:hint="@string/description"
                 android:lineSpacingExtra="8sp"
                 android:padding="10dp"
                 android:textAlignment="viewStart"
@@ -73,7 +73,8 @@
                 app:layout_constraintHorizontal_bias="0.428"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="TextContrastCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
@@ -86,7 +87,7 @@
         android:layout_marginTop="96dp"
         android:layout_marginBottom="35dp"
         android:background="@drawable/btn_bg"
-        android:text="Add Review"
+        android:text="@string/add_review"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
@@ -100,7 +101,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="35dp"
         android:background="@drawable/btn_bg"
-        android:text="View Reviews"
+        android:text="@string/view_reviews"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/street_scrollView2" />
@@ -114,7 +115,7 @@
         android:layout_marginEnd="37dp"
         android:layout_marginBottom="37dp"
         android:background="@drawable/btn_bg"
-        android:text="Location"
+        android:text="@string/location"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/street_rest_btn_viewrev"
         app:layout_constraintStart_toEndOf="@+id/street_add_review"
@@ -140,7 +141,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="23dp"
             android:layout_marginBottom="4dp"
-            android:text="TextView"
+            android:text="@string/textview"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"

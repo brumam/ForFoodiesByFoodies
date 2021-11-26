@@ -3,7 +3,7 @@ package com.example.forfoodiesbyfoodies.Helpers;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.NonNull;
+
 
 public class Restaurant implements Parcelable {
     private String name, description, imageURL, bookingURL;

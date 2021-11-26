@@ -52,6 +52,18 @@
     <string name="please_add_your_review">Please add your review</string>
     <string name="submit">Submit</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="add_location">Add Location</string>
+    <string name="restaurant">Restaurant</string>
+    <string name="description">Description....</string>
+    <string name="textview">TextView</string>
+    <string name="booking">Booking</string>
+    <string name="add_review">Add Review</string>
+    <string name="view_reviews">View Reviews</string>
+    <string name="street_food">Street Food</string>
+    <string name="location">Location</string>
+
+
 
 
 </resources>

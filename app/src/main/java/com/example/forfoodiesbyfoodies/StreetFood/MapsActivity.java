@@ -5,7 +5,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
+
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;

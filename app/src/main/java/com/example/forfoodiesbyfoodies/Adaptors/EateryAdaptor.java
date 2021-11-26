@@ -1,7 +1,7 @@
 package com.example.forfoodiesbyfoodies.Adaptors;
 
-import android.content.Context;
-import android.content.Intent;
+
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.forfoodiesbyfoodies.Helpers.Restaurant;
 import com.example.forfoodiesbyfoodies.R;
 
-import com.example.forfoodiesbyfoodies.Restaurant.RecyclerActivity;
-import com.example.forfoodiesbyfoodies.Restaurant.WebActivity;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

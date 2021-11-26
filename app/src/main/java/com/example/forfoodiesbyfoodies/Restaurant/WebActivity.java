@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
 
-import com.example.forfoodiesbyfoodies.Helpers.Restaurant;
+
+
 import com.example.forfoodiesbyfoodies.R;
 
 public class WebActivity extends AppCompatActivity {

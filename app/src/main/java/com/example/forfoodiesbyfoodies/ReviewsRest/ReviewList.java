@@ -6,10 +6,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
+
 
 import com.example.forfoodiesbyfoodies.Adaptors.ReviewAdapter;
-import com.example.forfoodiesbyfoodies.Helpers.Restaurant;
+
 import com.example.forfoodiesbyfoodies.Helpers.ReviewsRest;
 import com.example.forfoodiesbyfoodies.R;
 import com.google.firebase.database.DataSnapshot;

@@ -14,8 +14,7 @@ import android.widget.ImageView;
 import com.example.forfoodiesbyfoodies.Adaptors.StreetFoodAdapter;
 import com.example.forfoodiesbyfoodies.Helpers.StreetFood;
 import com.example.forfoodiesbyfoodies.R;
-import com.example.forfoodiesbyfoodies.Restaurant.RecyclerActivity;
-import com.example.forfoodiesbyfoodies.Restaurant.RestaurantDetails;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

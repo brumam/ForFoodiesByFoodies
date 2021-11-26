@@ -8,8 +8,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.text.BoringLayout;
+
 import android.text.TextUtils;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -21,8 +20,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.forfoodiesbyfoodies.R;
-import com.example.forfoodiesbyfoodies.Restaurant.AddRestaurantActivity;
-import com.example.forfoodiesbyfoodies.Restaurant.RecyclerActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;

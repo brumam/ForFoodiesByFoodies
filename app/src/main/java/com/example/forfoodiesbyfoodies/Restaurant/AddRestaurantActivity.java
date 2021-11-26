@@ -17,7 +17,7 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.forfoodiesbyfoodies.R;
-import com.example.forfoodiesbyfoodies.ReviewsRest.AddReviewRest;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;

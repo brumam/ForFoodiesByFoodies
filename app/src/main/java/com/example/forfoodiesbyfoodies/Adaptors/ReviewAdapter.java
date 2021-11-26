@@ -8,7 +8,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.forfoodiesbyfoodies.Helpers.ReviewsRest;

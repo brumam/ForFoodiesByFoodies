@@ -4,19 +4,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
+
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.example.forfoodiesbyfoodies.App.AppClass;
 import com.example.forfoodiesbyfoodies.Helpers.Restaurant;
-import com.example.forfoodiesbyfoodies.Profile.ProfileActivity;
+
 import com.example.forfoodiesbyfoodies.R;
 import com.example.forfoodiesbyfoodies.ReviewsRest.AddReviewRest;
 import com.example.forfoodiesbyfoodies.ReviewsRest.ReviewList;
@@ -24,15 +22,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.List;
+
+
 
 
 public class RestaurantDetails extends AppCompatActivity {
 
 //    Declare impostors
 
-    List<Restaurant> restList;
+
 
 
     ImageView rest_img;

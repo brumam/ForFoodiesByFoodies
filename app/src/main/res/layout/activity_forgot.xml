@@ -107,7 +107,8 @@
             android:text="@string/fw_log"
             android:textColor="@color/red"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="TextContrastCheck" />
 
     </LinearLayout>
 

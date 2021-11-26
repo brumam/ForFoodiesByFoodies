@@ -6,19 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CheckedTextView;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.forfoodiesbyfoodies.App.AppClass;
-import com.example.forfoodiesbyfoodies.Helpers.Restaurant;
+
 import com.example.forfoodiesbyfoodies.Helpers.StreetFood;
 import com.example.forfoodiesbyfoodies.R;
-import com.example.forfoodiesbyfoodies.Restaurant.RestaurantDetails;
-import com.example.forfoodiesbyfoodies.Restaurant.WebActivity;
-import com.example.forfoodiesbyfoodies.ReviewsRest.AddReviewRest;
-import com.example.forfoodiesbyfoodies.ReviewsRest.ReviewList;
+
+
 import com.example.forfoodiesbyfoodies.ReviewsStreet.AddReviewStreet;
 import com.example.forfoodiesbyfoodies.ReviewsStreet.ReviewStreetList;
 import com.google.firebase.database.DatabaseReference;

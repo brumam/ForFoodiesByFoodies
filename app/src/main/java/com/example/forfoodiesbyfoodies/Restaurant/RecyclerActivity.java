@@ -2,12 +2,10 @@ package com.example.forfoodiesbyfoodies.Restaurant;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,15 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.forfoodiesbyfoodies.Adaptors.EateryAdaptor;
-import com.example.forfoodiesbyfoodies.Adaptors.StreetFoodAdapter;
+
 import com.example.forfoodiesbyfoodies.App.AppClass;
 import com.example.forfoodiesbyfoodies.Helpers.Restaurant;
-import com.example.forfoodiesbyfoodies.Helpers.StreetFood;
+
 import com.example.forfoodiesbyfoodies.R;
-import com.example.forfoodiesbyfoodies.Helpers.User;
-import com.example.forfoodiesbyfoodies.StreetFood.AddStreetFoodActivity;
-import com.example.forfoodiesbyfoodies.StreetFood.StreetFoodDetails;
-import com.google.android.gms.tasks.OnCompleteListener;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,8 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;

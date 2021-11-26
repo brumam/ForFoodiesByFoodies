@@ -7,12 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.forfoodiesbyfoodies.Adaptors.ReviewAdapter;
+
 import com.example.forfoodiesbyfoodies.Adaptors.ReviewStreetAdapter;
-import com.example.forfoodiesbyfoodies.Helpers.ReviewsRest;
+
 import com.example.forfoodiesbyfoodies.Helpers.ReviewsStreet;
 import com.example.forfoodiesbyfoodies.R;
-import com.example.forfoodiesbyfoodies.ReviewsRest.ReviewList;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

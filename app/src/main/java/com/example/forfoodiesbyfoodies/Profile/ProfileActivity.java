@@ -4,21 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentResolver;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.webkit.MimeTypeMap;
+
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.forfoodiesbyfoodies.R;
-import com.example.forfoodiesbyfoodies.Helpers.User;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -27,14 +25,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
+
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
+
 import com.squareup.picasso.Picasso;
 
-import java.util.HashMap;
-import java.util.Map;
+
 
 public class ProfileActivity extends AppCompatActivity {
 //    Declare Impostors
@@ -42,7 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
      TextView emailTxtView, passwordTxtView;
      ImageView userImageView;
     private final String TAG = this.getClass().getName().toUpperCase();
-     public static final String URL = "URL";
+
      String email;
     private static final String USERS = "user";
 
