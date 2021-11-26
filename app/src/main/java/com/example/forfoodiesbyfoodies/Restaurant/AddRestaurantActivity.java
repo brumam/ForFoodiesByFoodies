@@ -33,6 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AddRestaurantActivity extends AppCompatActivity {
+    //    Declare impostors
     private ImageButton mPostImage;
     private EditText mPostTitle;
     private EditText mPostDesc;
@@ -49,7 +50,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_restaurant);
 
-
+//        Bind impostors
         mProgress = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();
@@ -64,6 +65,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
         mPostDesc = findViewById(R.id.descriptionEt);
         mSubmitButton = findViewById(R.id.submitPost);
 
+//        Set on click - get Content images-
         mPostImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +75,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
             }
         });
 
+        //        Calling method startPosting
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +86,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
 
 
     }
-
+    //    Check requestcode - add data
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -96,7 +99,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
 
         }
     }
-
+    //    Start Posting new Restaurant
     private void startPosting() {
 
         mProgress.setMessage("Hmm... Adding fresh food");
@@ -155,6 +158,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
         }
 
     }
+    //    Content extension resolver
     private String getExt( Uri uri){
         ContentResolver resolver = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();

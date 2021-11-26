@@ -67,13 +67,17 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("user");
 
+//        Update UI
         if(mAuth.getCurrentUser() != null){
             updateUI(mAuth.getCurrentUser());
         }
 
+//        Get intent from Log in activity
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
 
+
+//        set profile picture - top
         if(AppClass.Session.user.getImageUrl()!= null){
             Picasso.get().load(AppClass.Session.user.getImageUrl()).fit().into(profile);
             imglog.setVisibility(View.INVISIBLE);
@@ -90,21 +94,21 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         });
 
-//        mAuthListener = new FirebaseAuth.AuthStateListener(){
-//            @Override
-//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
-//                mUser = firebaseAuth.getCurrentUser();
-//
-//                if(mUser != null){
-//                    Toast.makeText(MainActivity.this,"Signed In", Toast.LENGTH_SHORT).show();
-//                }else{
-//                    Toast.makeText(MainActivity.this,"Not Signed In", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        };
+        mAuthListener = new FirebaseAuth.AuthStateListener(){
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
+                mUser = firebaseAuth.getCurrentUser();
+
+                if(mUser != null){
+
+                }else{
+
+                }
+            }
+        };
 
 
-//   Profile Activity Image View
+//   Profile Activity Image View  start activity - ProfileActivity.class
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+//         Street Food intent
         main_street.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,16 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //  If statement on start to check if the user is already logged into app or if he is not redirect to LoginActivity-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        mAuth.addAuthStateListener(mAuthListener);
-//        if (currentUser == null){
-//            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-//        }
-//    }
+// Update UI
 
     public void updateUI(FirebaseUser currentUser) {
         Intent profileIntent = new Intent(getApplicationContext(), ProfileActivity.class);

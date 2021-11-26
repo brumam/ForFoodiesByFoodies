@@ -37,6 +37,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity {
+//    Declare Impostors
      TextView  nameTxtView,lastTxtView;
      TextView emailTxtView, passwordTxtView;
      ImageView userImageView;
@@ -116,6 +117,8 @@ public class ProfileActivity extends AppCompatActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+
+//        Change class to EditProfile set on click
         ed_pass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

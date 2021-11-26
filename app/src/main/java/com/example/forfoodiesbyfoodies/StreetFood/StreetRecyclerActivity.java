@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StreetRecyclerActivity extends AppCompatActivity implements StreetFoodAdapter.sHolder.streetFoodInterface {
+//    Declare impostors
     RecyclerView rv;
     ImageView logo;
     StreetFoodAdapter adapter;
@@ -36,11 +37,14 @@ public class StreetRecyclerActivity extends AppCompatActivity implements StreetF
     DatabaseReference mDatabase;
     FirebaseUser mAuth;
 
+//    Call List array for StreetFood Helper Class
     List<StreetFood> streetFoodList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_street_recycler);
+
+//        Bind impostors
 
         add_street = findViewById(R.id.street_add_restaurant);
         logo = findViewById(R.id.street_main_logo);
@@ -53,7 +57,7 @@ public class StreetRecyclerActivity extends AppCompatActivity implements StreetF
 
 
 
-
+//      Set on click listener - Add Street Food
         add_street.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,9 +65,13 @@ public class StreetRecyclerActivity extends AppCompatActivity implements StreetF
                 startActivity(intent);
             }
         });
+
+//      Get Street Card -
         rv = findViewById(R.id.street_rv_eatery);
+//      Set layout manager - Linear
         rv.setLayoutManager(new LinearLayoutManager(StreetRecyclerActivity.this));
 
+//        Get instance firebase - for StreetFood - DataSnapshot - List array
         FirebaseDatabase.getInstance().getReference("StreetFood").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -83,6 +91,7 @@ public class StreetRecyclerActivity extends AppCompatActivity implements StreetF
         });
     }
 
+//    Override Adapter - and send to StreetFood Details
     @Override
     public void onStreetClick(int i) {
         Intent intent = new Intent(StreetRecyclerActivity.this, StreetFoodDetails.class);

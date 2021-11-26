@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewStreetList extends AppCompatActivity {
+//    Declare impostors
     RecyclerView rv;
     RecyclerView.LayoutManager manager;
 
@@ -36,10 +37,14 @@ public class ReviewStreetList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review_street_list);
 
+//        Bind impostors
+
         rv = findViewById(R.id.street_id_rv);
         dbref = FirebaseDatabase.getInstance().getReference("ReviewsStreet");
         manager = new LinearLayoutManager(ReviewStreetList.this);
         rv.setLayoutManager(manager);
+
+//        Get instance from Firebase - ReviewsStreet Reference
 
         FirebaseDatabase.getInstance().getReference("ReviewsStreet").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

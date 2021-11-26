@@ -22,11 +22,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewList extends AppCompatActivity {
+//    Declare impostors
     RecyclerView rv;
     RecyclerView.LayoutManager manager;
 
     List<ReviewsRest> revList = new ArrayList<>();
-    List<Restaurant> restList;
+
 
     ReviewAdapter adapter;
     DatabaseReference dbref;
@@ -35,13 +36,15 @@ public class ReviewList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review_list);
+
+//        Bind impostors
         rv = findViewById(R.id.id_rv);
         dbref = FirebaseDatabase.getInstance().getReference("Reviews");
         manager = new LinearLayoutManager(ReviewList.this);
         rv.setLayoutManager(manager);
 
 
-
+//          Get instance, reference Reviews from Database - DataSnapshot
         FirebaseDatabase.getInstance().getReference("Reviews").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

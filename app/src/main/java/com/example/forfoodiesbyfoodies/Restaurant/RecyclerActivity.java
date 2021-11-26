@@ -40,6 +40,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor.EateryHolder.RestaurantInterface {
+    //    Declare impostors
         RecyclerView rv;
         EateryAdaptor adapter;
         Button add_rest;
@@ -52,7 +53,7 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 
 
 
-
+    //    Call List array for Restaurant Helper Class
         List<Restaurant> restList =  new ArrayList<>();
 
 
@@ -64,7 +65,7 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
 
-
+//        Bind impostors
             add_rest = findViewById(R.id.add_restaurant);
 
 
@@ -75,7 +76,7 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 
 
 
-
+//      Set on click listener - Add Restaurant
         add_rest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,13 +84,14 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
                 startActivity(intent);
             }
         });
-
+//      Get Street Card -
         rv = findViewById(R.id.rv_eatery);
+        //      Set layout manager - Linear
         rv.setLayoutManager(new LinearLayoutManager(RecyclerActivity.this));
 
 
 
-
+//        Get instance firebase - for Restaurant - DataSnapshot - List array
             FirebaseDatabase.getInstance().getReference("Restaurants").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -102,6 +104,7 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
                     adapter = new EateryAdaptor(restList, RecyclerActivity.this);
 
                     rv.setAdapter(adapter);
+//                   Sort Restaurant list in alphabetical order
                     Collections.sort(restList, new Comparator<Restaurant>() {
                         @Override
                         public int compare(Restaurant o1, Restaurant o2) {
@@ -119,7 +122,7 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 
             });
 
-
+//          Check UserType - Admin - permissions
             if (AppClass.Session.user.getUserType().compareTo("admin")==0){
                 add_rest.setVisibility(View.VISIBLE);
             }else{
@@ -136,7 +139,7 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 
 
 
-
+    //    Override Adapter - and send to StreetFood Details
     public void onRestaurantClick(int i) {
         Intent intent = new Intent(RecyclerActivity.this, RestaurantDetails.class);
         intent.putExtra("Restaurant", restList.get(i));

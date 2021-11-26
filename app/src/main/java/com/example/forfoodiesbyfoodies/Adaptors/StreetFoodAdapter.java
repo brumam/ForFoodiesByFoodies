@@ -16,16 +16,16 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class StreetFoodAdapter extends RecyclerView.Adapter<StreetFoodAdapter.sHolder> {
-
+    // Call array list StreetFood Helper Class
     List<StreetFood> streetFoodList;
-
+    //  StreetFood interface  - listener
     sHolder.streetFoodInterface listener;
-
+    //    Constructor StreetFood
     public StreetFoodAdapter(List<StreetFood> streetFoodList,sHolder.streetFoodInterface _listener) {
         this.streetFoodList = streetFoodList;
         listener = _listener;
     }
-
+    // Override sHolder - and inflate Street Card
     @NonNull
     @Override
     public sHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,7 +34,7 @@ public class StreetFoodAdapter extends RecyclerView.Adapter<StreetFoodAdapter.sH
     }
 
 
-
+    //    Set details for Card
     @Override
     public void onBindViewHolder(@NonNull sHolder holder, int position) {
         holder.tv.setText(streetFoodList.get(position).getName());
@@ -42,13 +42,13 @@ public class StreetFoodAdapter extends RecyclerView.Adapter<StreetFoodAdapter.sH
     }
 
 
-
+    //    Count items
     @Override
     public int getItemCount() {
         return streetFoodList.size();
     }
 
-
+    //    Extends recyclerview
     public  static class sHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView iv;
         TextView tv;
@@ -62,7 +62,7 @@ public class StreetFoodAdapter extends RecyclerView.Adapter<StreetFoodAdapter.sH
             listener = _listener;
             itemView.setOnClickListener(this);
         }
-
+        //        Get position from count items and send details on Recycler View
         @Override
         public void onClick(View v) {
             listener.onStreetClick(getAdapterPosition());

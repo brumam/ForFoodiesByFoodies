@@ -28,6 +28,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AddReviewStreet extends AppCompatActivity {
+
+//    Declare impostors
     RatingBar ratingBar;
     EditText addreview;
 
@@ -43,10 +45,13 @@ public class AddReviewStreet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_review_street);
 
-        //        initiate a rating bar
-        ratingBar = findViewById(R.id.street_ratingBar);
+//        Bind impostors
         reviewbtn = findViewById(R.id.street_review_btn_submit);
         addreview = findViewById(R.id.street_rev_et);
+
+        //        initiate a rating bar
+        ratingBar = findViewById(R.id.street_ratingBar);
+
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -62,7 +67,7 @@ public class AddReviewStreet extends AppCompatActivity {
 
 
 
-
+//      Set on click, call method startReview and get number of stars with toast
         reviewbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +83,7 @@ public class AddReviewStreet extends AppCompatActivity {
         });
     }
 
+//    Add new review to Database
     private void startReview(){
         String desc = addreview.getText().toString();
         String fn = AppClass.Session.user.getFirstName();

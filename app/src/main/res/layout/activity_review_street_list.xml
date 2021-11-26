@@ -7,29 +7,32 @@
     android:background="@drawable/bg_streetfood"
     tools:context=".ReviewsStreet.ReviewStreetList">
 
-    <ImageView
-        android:id="@+id/street_rev_log"
+    <TextView
+        android:id="@+id/str_tv_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="133dp"
+        android:layout_marginTop="68dp"
+        android:fontFamily="serif"
+        android:text="Street Food Reviews"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/street_id_rv"
         android:layout_width="391dp"
         android:layout_height="564dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/street_rev_log">
+        app:layout_constraintTop_toBottomOf="@+id/str_tv_top">
 
     </androidx.recyclerview.widget.RecyclerView>
 

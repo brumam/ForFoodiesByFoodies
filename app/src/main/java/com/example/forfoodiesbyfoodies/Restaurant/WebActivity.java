@@ -14,6 +14,8 @@ import com.example.forfoodiesbyfoodies.R;
 
 public class WebActivity extends AppCompatActivity {
 
+//    Declare impostors
+
     WebView wv;
 
     String book;
@@ -23,15 +25,19 @@ public class WebActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
 
+//        Bind impostors
+
         wv = findViewById(R.id.wv_id);
         wv.setWebViewClient(new WebViewClient());
+
+//        get intent key from restaurant details
 
         Intent i = getIntent();
 
         book = i.getStringExtra("key");
 
         wv.loadUrl(book);
-
+//      Set web settings
         WebSettings settings = wv.getSettings();
         settings.setLoadWithOverviewMode(true);
         settings.setUseWideViewPort(true);
@@ -40,6 +46,8 @@ public class WebActivity extends AppCompatActivity {
 
 
     }
+
+//    Avoid on back press button
     @Override
     public void onBackPressed() {
         if(wv.canGoBack()){

@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 
 import android.webkit.MimeTypeMap;
@@ -25,11 +24,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.forfoodiesbyfoodies.Helpers.User;
-import com.google.android.gms.tasks.OnCompleteListener;
+
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,18 +40,14 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class RegisterActivity extends AppCompatActivity {
-//    Impostors
+//   Init Impostors
     private EditText reg_input_email,reg_input_fn,reg_input_sn,reg_input_pw,reg_confirm_pw;
     private TextView reg_already;
     private Button btn_reg;
     private ProgressBar progressBar;
-
-
     private DatabaseReference mDatabase;
     private StorageReference storageReference;
     private FirebaseUser fuser;
@@ -83,7 +78,7 @@ public class RegisterActivity extends AppCompatActivity {
         useronoff = findViewById(R.id.reg_onoff);
 
 
-
+//        Call DB ref and get currentUser
         mDatabase = FirebaseDatabase.getInstance().getReference("user");
         storageReference = FirebaseStorage.getInstance().getReference("PROFILE_PIC_USERS");
         mAuth = FirebaseAuth.getInstance();
@@ -92,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-
+//      Add click listener for picture with new intent
         profpic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,8 +99,8 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-//        Picasso.get().load(url).fit().into(userImageView);
-//      OnClick Event for createUser check if the user enter email and password in EDIT TEXT
+
+//      OnClick Event for createUser check if the user enter email and password in EDIT TEXT and create new user and add to Database
         btn_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,7 +125,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (!TextUtils.isEmpty(password) && !TextUtils.isEmpty(confirmpw)&& url != null) {
 
                     if (password.equals(confirmpw)) {
-                        //are equal
+                        //must equal
 
                         mAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
@@ -166,6 +161,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                                                 }
+//                                          If the upload is unsuccessful nothing is stored
                                             }).addOnFailureListener(new OnFailureListener() {
                                                 @Override
                                                 public void onFailure(@NonNull Exception e) {
@@ -213,6 +209,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+//    Check requestcode and get data for Uri - url.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -228,7 +225,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-
+//  Get extension resolver
     private String getExt(Uri uri){
         ContentResolver resolver = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();

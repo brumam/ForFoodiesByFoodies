@@ -27,6 +27,7 @@ import com.squareup.picasso.Picasso;
 
 public class StreetFoodDetails extends AppCompatActivity {
 
+//    Declare impostors
     ImageView rest_img;
     TextView rest_desc, rest_name;
     Button review, viewreview;
@@ -38,6 +39,7 @@ public class StreetFoodDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_street_food_details);
 
+//        Bind impostors
         rest_img = findViewById(R.id.street_iv2);
         strcheck = findViewById(R.id.str_check_veg);
         rest_desc = findViewById(R.id.street_tvDesc);
@@ -46,6 +48,7 @@ public class StreetFoodDetails extends AppCompatActivity {
         viewreview = findViewById(R.id.street_rest_btn_viewrev);
 
 
+//        Get intent from Street Food Recycler
 
         Intent i = getIntent();
 
@@ -54,6 +57,7 @@ public class StreetFoodDetails extends AppCompatActivity {
 
 
 
+//        Set details
 
         Picasso.get().load(street.getImageURL()).fit().into(rest_img);
         rest_name.setText(street.getName());
@@ -64,23 +68,20 @@ public class StreetFoodDetails extends AppCompatActivity {
 
 
 
-        if(AppClass.Session.user.getUserType().compareTo("user") ==0){
-            review.setVisibility(View.INVISIBLE);
-        }else{
-            review.setVisibility(View.VISIBLE);
-        }
 
 
+//        Set on click listener Add review
 
         review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent rev = new Intent(StreetFoodDetails.this, AddReviewStreet.class);
-                rev.putExtra("image",street.getImageURL());
+
                 startActivity(rev);
             }
         });
 
+//        Set on click listener View Reviews
         viewreview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

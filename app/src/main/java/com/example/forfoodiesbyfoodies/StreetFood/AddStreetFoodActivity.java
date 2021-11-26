@@ -38,6 +38,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AddStreetFoodActivity extends AppCompatActivity {
+
+//    Declare impostors
     private ImageButton mPostImage;
     private CheckBox veggy;
     private EditText mPostTitle;
@@ -56,6 +58,8 @@ public class AddStreetFoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_street_food);
 
+//        Bind impostors
+
         mProgress = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();
@@ -73,6 +77,7 @@ public class AddStreetFoodActivity extends AppCompatActivity {
         veggy = findViewById(R.id.checkBox);
 
 
+//        Set on check change listener - Checkbox button - get string
         veggy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -86,7 +91,13 @@ public class AddStreetFoodActivity extends AppCompatActivity {
             }
         });
 
+//        auto fill Database with Non-vegetarian if the checkbox is unchecked
+        if(!veggy.isChecked()){
+            checkVeg = "Non-Vegetarian";
+        }
 
+
+//        set on click Maps activity
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,6 +106,7 @@ public class AddStreetFoodActivity extends AppCompatActivity {
             }
         });
 
+//        Set on click - get Content images-
         mPostImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,6 +116,7 @@ public class AddStreetFoodActivity extends AppCompatActivity {
             }
         });
 
+//        Calling method startPosting
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,6 +127,7 @@ public class AddStreetFoodActivity extends AppCompatActivity {
 
     }
 
+//    Check requestcode - add data
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -127,6 +141,7 @@ public class AddStreetFoodActivity extends AppCompatActivity {
         }
     }
 
+//    Start Posting new Street food Stall
     private void startPosting() {
 
         mProgress.setMessage("Hmm... Adding fresh food");
@@ -188,6 +203,8 @@ public class AddStreetFoodActivity extends AppCompatActivity {
         }
 
     }
+
+//    Content extension resolver
     private String getExt( Uri uri){
         ContentResolver resolver = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();

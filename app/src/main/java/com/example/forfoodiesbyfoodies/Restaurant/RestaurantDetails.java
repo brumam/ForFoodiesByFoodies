@@ -30,6 +30,7 @@ import java.util.List;
 
 public class RestaurantDetails extends AppCompatActivity {
 
+//    Declare impostors
 
     List<Restaurant> restList;
 
@@ -45,6 +46,8 @@ public class RestaurantDetails extends AppCompatActivity {
         setContentView(R.layout.activity_restaurant_details);
 
 
+//        Bind impostors
+
 
         rest_img = findViewById(R.id.iv2);
         rest_desc = findViewById(R.id.tvDesc);
@@ -55,6 +58,7 @@ public class RestaurantDetails extends AppCompatActivity {
         viewreview = findViewById(R.id.rest_btn_viewrev);
 
 
+//        Get intent from RecyclerActivity - Restaurant
 
         Intent i = getIntent();
 
@@ -64,6 +68,8 @@ public class RestaurantDetails extends AppCompatActivity {
 
 
 
+
+//        Set details
         Picasso.get().load(rest.getImageURL()).fit().into(rest_img);
         rest_name.setText(rest.getName());
         rest_desc.setText(rest.getDescription());
@@ -72,7 +78,7 @@ public class RestaurantDetails extends AppCompatActivity {
         String url = bookingURL.getText().toString();
 
 
-
+//      Check userType - for review permissions
         if(AppClass.Session.user.getUserType().compareTo("user") ==0){
             review.setVisibility(View.INVISIBLE);
         }else{
@@ -80,7 +86,7 @@ public class RestaurantDetails extends AppCompatActivity {
         }
 
 
-
+//        Set on click listener Add review
         review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +94,7 @@ public class RestaurantDetails extends AppCompatActivity {
                 startActivity(rev);
             }
         });
-
+//        Set on click listener View Reviews
         viewreview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,9 +104,7 @@ public class RestaurantDetails extends AppCompatActivity {
             }
         });
 
-
-
-
+//        Book button putExtra - String BookingURL
         btnbook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

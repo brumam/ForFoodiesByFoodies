@@ -39,7 +39,7 @@ import com.squareup.picasso.Picasso;
 import org.w3c.dom.Text;
 
 public class EditProfile extends AppCompatActivity {
-
+//     Declare Impostors
     public static final String TAG = "TAG";
     EditText edit_password, confirm_pw;
     ImageView edit_user_imageview, edit_on_off;
@@ -64,6 +64,7 @@ public class EditProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+//        Bind Impostors
         edit_password = findViewById(R.id.edit_prof_pw);
         confirm_pw = findViewById(R.id.edit_prof_confirm_pw);
         edit_user_imageview = findViewById(R.id.edit_user_imageview);
@@ -83,6 +84,7 @@ public class EditProfile extends AppCompatActivity {
         storageReference = FirebaseStorage.getInstance().getReference("PROFILE_PIC_USERS");
 
 
+//        Remove visibility for User image Logo if the getImageURL != null
         if(AppClass.Session.user.getImageUrl() != null){
             edit_on_off.setVisibility(View.INVISIBLE);
             Picasso.get().load(AppClass.Session.user.getImageUrl()).fit().into(edit_user_imageview);
@@ -90,7 +92,7 @@ public class EditProfile extends AppCompatActivity {
             edit_on_off.setVisibility(View.VISIBLE);
         }
 
-
+//     Get content
         edit_user_imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +103,7 @@ public class EditProfile extends AppCompatActivity {
         });
 
 
+//        Change Password method and update profile picture also check TEXT UTILS
         edit_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,6 +173,7 @@ public class EditProfile extends AppCompatActivity {
 
     }
 
+//    Check request code - and add data
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -184,6 +188,8 @@ public class EditProfile extends AppCompatActivity {
         }
 
     }
+
+//    Content extension resolver
     private String getExt(Uri uri){
         ContentResolver resolver = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();

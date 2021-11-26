@@ -71,11 +71,8 @@ public class LoginActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance().getReference("user");
 
 
-//        UpdateUI with getCurrentUser function
-//        if(mAuth.getCurrentUser() != null){
-//            updateUI(mAuth.getCurrentUser());
-//        }
 
+//       Update currentuser
         mAuthListener = new FirebaseAuth.AuthStateListener(){
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth){
@@ -88,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-// Event listener for Log in button
+// Event listener for Log in button and TextUtils for empty fields and call login method
         btn_log.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -122,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
+//   Log in method - sign in Database
     private void  login (String email, String password){
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
 

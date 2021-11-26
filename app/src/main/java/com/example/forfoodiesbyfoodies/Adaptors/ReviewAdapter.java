@@ -18,13 +18,16 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class ReviewAdapter extends  RecyclerView.Adapter<ReviewAdapter.Holder> {
-
+    // Call array list ReviewsRest Helper Class
     List<ReviewsRest> revList;
 
+    //    Constructor ReviewsRest
     public ReviewAdapter(List<ReviewsRest> revList) {
         this.revList = revList;
     }
 
+
+    // Override Holder - and inflate Review Card
     @NonNull
     @Override
     public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,6 +36,7 @@ public class ReviewAdapter extends  RecyclerView.Adapter<ReviewAdapter.Holder> {
         return holder;
     }
 
+    //    Set details for Card
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         holder.rev.setText(revList.get(position).getReview());
@@ -41,12 +45,12 @@ public class ReviewAdapter extends  RecyclerView.Adapter<ReviewAdapter.Holder> {
         holder.sn.setText(revList.get(position).getLastName());
         Picasso.get().load(revList.get(position).getImageURL()).fit().into(holder.iv);
     }
-
+    //    Count items
     @Override
     public int getItemCount() {
         return revList.size();
     }
-
+    //    Extends recyclerview
     public static class Holder extends RecyclerView.ViewHolder{
         ImageView iv;
         TextView fn,sn,rev;

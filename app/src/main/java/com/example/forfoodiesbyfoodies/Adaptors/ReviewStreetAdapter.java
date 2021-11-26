@@ -18,13 +18,16 @@ import java.util.List;
 
 public class ReviewStreetAdapter extends RecyclerView.Adapter<ReviewStreetAdapter.StreetHolder> {
 
+    // Call array list ReviewsStreet Helper Class
     List<ReviewsStreet> streetList;
 
+    //    Constructor ReviewsStreet
     public ReviewStreetAdapter(List<ReviewsStreet> streetList) {
         this.streetList = streetList;
 
     }
 
+    // Override StreetHolder - and inflate Eatery Card
     @NonNull
     @Override
     public StreetHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -32,6 +35,7 @@ public class ReviewStreetAdapter extends RecyclerView.Adapter<ReviewStreetAdapte
         StreetHolder streetHolder = new StreetHolder(v);
         return streetHolder;
     }
+    //    Set details for Card
 
     @Override
     public void onBindViewHolder(@NonNull StreetHolder holder, int position) {
@@ -42,11 +46,13 @@ public class ReviewStreetAdapter extends RecyclerView.Adapter<ReviewStreetAdapte
         Picasso.get().load(streetList.get(position).getImageURL()).fit().into(holder.iv);
     }
 
+    //    Count items
     @Override
     public int getItemCount() {
         return streetList.size();
     }
 
+    //    Extends recyclerview
     public static class StreetHolder extends RecyclerView.ViewHolder{
         ImageView iv;
         TextView fn,sn,rev;

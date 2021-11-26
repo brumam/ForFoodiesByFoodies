@@ -22,12 +22,14 @@ import java.util.List;
 
 public class EateryAdaptor extends RecyclerView.Adapter<EateryAdaptor.EateryHolder> {
 
+// Call array list Restaurant Helper Class
     List<Restaurant> restList;
 
 
-
+//  Restaurant interface  - listener
     EateryHolder.RestaurantInterface listener;
 
+//    Constructor Restaurant
     public EateryAdaptor(List<Restaurant> restList, EateryHolder.RestaurantInterface _listener) {
         this.restList = restList;
         listener = _listener;
@@ -35,7 +37,7 @@ public class EateryAdaptor extends RecyclerView.Adapter<EateryAdaptor.EateryHold
     }
 
 
-
+// Override EateryHolder - and inflate Eatery Card
     @NonNull
     @Override
     public EateryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,6 +45,7 @@ public class EateryAdaptor extends RecyclerView.Adapter<EateryAdaptor.EateryHold
         return new EateryHolder(v,listener);
     }
 
+//    Set details for Card
     @Override
     public void onBindViewHolder(@NonNull EateryHolder holder, int position) {
         holder.tv.setText(restList.get(position).getName());
@@ -53,11 +56,13 @@ public class EateryAdaptor extends RecyclerView.Adapter<EateryAdaptor.EateryHold
 
     }
 
+//    Count items
     @Override
     public int getItemCount() {
         return restList.size();
     }
 
+//    Extends recyclerview
     public static class EateryHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
         ImageView iv;
         TextView tv;
@@ -73,6 +78,7 @@ public class EateryAdaptor extends RecyclerView.Adapter<EateryAdaptor.EateryHold
 
         }
 
+//        Get position and send details on Recycler View
         @Override
         public void onClick(View v) {
         listener.onRestaurantClick(getAdapterPosition());
