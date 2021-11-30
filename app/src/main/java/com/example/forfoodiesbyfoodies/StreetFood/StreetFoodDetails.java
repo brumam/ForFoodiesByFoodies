@@ -63,9 +63,6 @@ public class StreetFoodDetails extends AppCompatActivity {
 
 
 
-
-
-
 //        Set on click listener Add review
 
         review.setOnClickListener(new View.OnClickListener() {

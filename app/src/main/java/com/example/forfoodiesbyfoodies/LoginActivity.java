@@ -36,21 +36,13 @@ public class LoginActivity extends AppCompatActivity {
      TextView log_sign_up, forgot_pw;
      Button btn_log;
      ProgressBar progressBar;
-
-
      String email, password;
     private static final String TAG = "LoginActivity";
-
 
      FirebaseAuth.AuthStateListener mAuthListener;
      FirebaseUser mUser;
      FirebaseAuth mAuth;
      DatabaseReference firebaseDatabase;
-
-
-
-
-
 
 
     @Override

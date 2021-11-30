@@ -54,8 +54,6 @@ public class StreetRecyclerActivity extends AppCompatActivity implements StreetF
 
 
 
-
-
 //      Set on click listener - Add Street Food
         add_street.setOnClickListener(new View.OnClickListener() {
             @Override

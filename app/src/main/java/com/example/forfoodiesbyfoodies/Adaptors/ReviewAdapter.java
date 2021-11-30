@@ -56,7 +56,6 @@ public class ReviewAdapter extends  RecyclerView.Adapter<ReviewAdapter.Holder> {
         TextView fn,sn,rev;
         RatingBar rating;
 
-
         public Holder(@NonNull View itemView) {
             super(itemView);
             iv = itemView.findViewById(R.id.rev_prof);

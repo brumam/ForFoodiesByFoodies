@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewList extends AppCompatActivity {
+
 //    Declare impostors
     RecyclerView rv;
     RecyclerView.LayoutManager manager;
@@ -51,7 +52,6 @@ public class ReviewList extends AppCompatActivity {
                 for(DataSnapshot dss: snapshot.getChildren()){
                     ReviewsRest rev = dss.getValue(ReviewsRest.class);
                     revList.add(rev);
-
 
                 }
                 adapter = new ReviewAdapter(revList);

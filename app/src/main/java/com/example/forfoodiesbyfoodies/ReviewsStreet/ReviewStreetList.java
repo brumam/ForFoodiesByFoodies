@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReviewStreetList extends AppCompatActivity {
+
 //    Declare impostors
     RecyclerView rv;
     RecyclerView.LayoutManager manager;
@@ -52,7 +53,6 @@ public class ReviewStreetList extends AppCompatActivity {
                 for(DataSnapshot dss: snapshot.getChildren()){
                     ReviewsStreet street = dss.getValue(ReviewsStreet.class);
                     streetList.add(street);
-
 
                 }
                 adapter = new ReviewStreetAdapter(streetList);

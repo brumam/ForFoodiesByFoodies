@@ -44,8 +44,6 @@ public class EditProfile extends AppCompatActivity {
     EditText edit_password, confirm_pw;
     ImageView edit_user_imageview, edit_on_off;
     Button edit_save;
-
-
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     FirebaseUser fUser;
@@ -53,11 +51,6 @@ public class EditProfile extends AppCompatActivity {
     DatabaseReference mDatabase;
     Uri url;
     ProgressBar progressBar;
-
-
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,10 +64,6 @@ public class EditProfile extends AppCompatActivity {
         edit_save = findViewById(R.id.edit_save);
         progressBar = findViewById(R.id.edit_progress);
         edit_on_off = findViewById(R.id.edit_onoff);
-
-
-
-
 
         storageReference = FirebaseStorage.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();

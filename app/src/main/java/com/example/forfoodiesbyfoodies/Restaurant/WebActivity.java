@@ -44,7 +44,6 @@ public class WebActivity extends AppCompatActivity {
         settings.setJavaScriptEnabled(true);
 
 
-
     }
 
 //    Avoid on back press button

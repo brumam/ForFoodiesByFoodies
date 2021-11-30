@@ -51,6 +51,7 @@ public class AddStreetFoodActivity extends AppCompatActivity {
     private Uri mImageUri;
     private String checkVeg;
     private static final int GALLERY_CODE = 10;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,8 +64,6 @@ public class AddStreetFoodActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         mStorage = FirebaseStorage.getInstance().getReference("STREET_PICS");
-
-
         mDatabase = FirebaseDatabase.getInstance().getReference().child("StreetFood");
 
         mPostImage = findViewById(R.id.street_imageButton);

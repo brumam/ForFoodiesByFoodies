@@ -55,10 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
     Uri url;
     private static final String TAG = "RegisterActivity";
     private User user;
-
     private ImageView profpic,useronoff;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +82,6 @@ public class RegisterActivity extends AppCompatActivity {
         fuser = mAuth.getCurrentUser();
 
 
-
-
 //      Add click listener for picture with new intent
         profpic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,8 +91,6 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivityForResult(addimage, 100);
             }
         });
-
-
 
 
 //      OnClick Event for createUser check if the user enter email and password in EDIT TEXT and create new user and add to Database
@@ -111,10 +104,6 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                 Picasso.get().load(url).fit().into(profpic);
-
-
-
-
 
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) && url == null) {
                     Toast.makeText(getApplicationContext(), "Please complete the register account", Toast.LENGTH_LONG).show();

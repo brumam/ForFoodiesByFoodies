@@ -38,10 +38,8 @@ public class ProfileActivity extends AppCompatActivity {
      TextView emailTxtView, passwordTxtView;
      ImageView userImageView;
     private final String TAG = this.getClass().getName().toUpperCase();
-
      String email;
     private static final String USERS = "user";
-
      FirebaseAuth mAuth;
      FirebaseFirestore mStore;
      FirebaseUser fuser;
@@ -63,8 +61,6 @@ public class ProfileActivity extends AppCompatActivity {
         email = intent.getStringExtra("email");
 
 
-
-
 //        Bind impostors
 
         nameTxtView = findViewById(R.id.name_textview);
@@ -75,11 +71,9 @@ public class ProfileActivity extends AppCompatActivity {
         onfoff = findViewById(R.id.onoff);
         ed_pass = findViewById(R.id.ed_password);
 
-
         mAuth = FirebaseAuth.getInstance();
         fuser = mAuth.getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference("user");
-
 
         // Read from the database
         mDatabase.addValueEventListener(new ValueEventListener() {

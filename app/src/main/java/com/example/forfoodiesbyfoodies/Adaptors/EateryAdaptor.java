@@ -50,9 +50,6 @@ public class EateryAdaptor extends RecyclerView.Adapter<EateryAdaptor.EateryHold
         holder.tv.setText(restList.get(position).getName());
         Picasso.get().load(restList.get(position).getImageURL()).fit().into(holder.iv);
 
-
-
-
     }
 
 //    Count items
@@ -73,7 +70,6 @@ public class EateryAdaptor extends RecyclerView.Adapter<EateryAdaptor.EateryHold
             tv = itemView.findViewById(R.id.tv_card_name);
             listener = _listener;
             itemView.setOnClickListener(this);
-
 
         }
 

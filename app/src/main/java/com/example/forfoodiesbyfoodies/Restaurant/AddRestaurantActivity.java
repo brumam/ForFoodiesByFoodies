@@ -45,6 +45,7 @@ public class AddRestaurantActivity extends AppCompatActivity {
     private ProgressDialog mProgress;
     private Uri mImageUri;
     private static final int GALLERY_CODE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,14 +53,11 @@ public class AddRestaurantActivity extends AppCompatActivity {
 
 //        Bind impostors
         mProgress = new ProgressDialog(this);
-
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
+
         mStorage = FirebaseStorage.getInstance().getReference("REST_PICS");
-
-
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Restaurants");
-
         mPostImage = findViewById(R.id.imageButton);
         mPostTitle = findViewById(R.id.postTitleEt);
         mPostDesc = findViewById(R.id.descriptionEt);
@@ -95,7 +93,6 @@ public class AddRestaurantActivity extends AppCompatActivity {
             mImageUri = data.getData();
             mPostImage.setImageURI(mImageUri);
             Picasso.get().load(mImageUri).fit().into(mPostImage);
-
 
         }
     }
@@ -133,8 +130,6 @@ public class AddRestaurantActivity extends AppCompatActivity {
 
 
                             newPost.setValue(dataToSave);
-
-
 
 
                             mProgress.dismiss();

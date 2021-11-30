@@ -56,11 +56,7 @@ public class AddReviewRest extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         mStorage = FirebaseStorage.getInstance().getReference("PROFILE_PIC_USERS");
-
-
         mDatabase = FirebaseDatabase.getInstance().getReference("Reviews");
-
-
 
 
 //      Set on click, call method startReview and get number of stars with toast
@@ -87,7 +83,6 @@ public class AddReviewRest extends AppCompatActivity {
         String sn = AppClass.Session.user.getLastName();
         String image = AppClass.Session.user.getImageUrl();
         Float rat = ratingBar.getRating();
-
 
 
         DatabaseReference newPost = mDatabase.push();

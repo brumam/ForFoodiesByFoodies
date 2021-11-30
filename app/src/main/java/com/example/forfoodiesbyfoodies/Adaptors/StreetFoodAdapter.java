@@ -18,13 +18,16 @@ import java.util.List;
 public class StreetFoodAdapter extends RecyclerView.Adapter<StreetFoodAdapter.sHolder> {
     // Call array list StreetFood Helper Class
     List<StreetFood> streetFoodList;
+
     //  StreetFood interface  - listener
     sHolder.streetFoodInterface listener;
+
     //    Constructor StreetFood
     public StreetFoodAdapter(List<StreetFood> streetFoodList,sHolder.streetFoodInterface _listener) {
         this.streetFoodList = streetFoodList;
         listener = _listener;
     }
+
     // Override sHolder - and inflate Street Card
     @NonNull
     @Override
@@ -32,7 +35,6 @@ public class StreetFoodAdapter extends RecyclerView.Adapter<StreetFoodAdapter.sH
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.streetcard,parent,false);
         return new sHolder(v,listener);
     }
-
 
     //    Set details for Card
     @Override

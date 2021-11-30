@@ -37,19 +37,14 @@ public class MainActivity extends AppCompatActivity {
 //    Declare Impostors
         private Button main_log_out,main_rest, main_street;
         private ImageView profile,imglog;
-
         private DatabaseReference mDatabase;
         private StorageReference mStorage;
         private FirebaseDatabase firebaseDatabase;
-
         private FirebaseAuth mAuth;
         private FirebaseAuth.AuthStateListener mAuthListener;
         private FirebaseUser mUser;
         private String email;
-
         private static final String USERS = "user";
-
-
 
 
     @Override

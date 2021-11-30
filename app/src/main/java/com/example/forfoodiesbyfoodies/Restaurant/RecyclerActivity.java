@@ -38,14 +38,10 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
         RecyclerView rv;
         EateryAdaptor adapter;
         Button add_rest;
-
         private String TAG = "user";
-
         DatabaseReference mDatabase;
         FirebaseUser fUser;
         FirebaseAuth mAuth;
-
-
 
     //    Call List array for Restaurant Helper Class
         List<Restaurant> restList =  new ArrayList<>();
@@ -62,13 +58,9 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
 //        Bind impostors
             add_rest = findViewById(R.id.add_restaurant);
 
-
-
             mAuth = FirebaseAuth.getInstance();
             fUser = mAuth.getCurrentUser();
             mDatabase = FirebaseDatabase.getInstance().getReference("user");
-
-
 
 //      Set on click listener - Add Restaurant
         add_rest.setOnClickListener(new View.OnClickListener() {
@@ -123,12 +115,6 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
                 add_rest.setVisibility(View.INVISIBLE);
             }
 
-
-
-
-
-
-
     }
 
 
@@ -137,10 +123,7 @@ public class RecyclerActivity extends AppCompatActivity implements EateryAdaptor
     public void onRestaurantClick(int i) {
         Intent intent = new Intent(RecyclerActivity.this, RestaurantDetails.class);
         intent.putExtra("Restaurant", restList.get(i));
-
         startActivity(intent);
-
-
 
 
     }

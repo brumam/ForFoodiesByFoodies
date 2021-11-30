@@ -30,14 +30,12 @@ public class RestaurantDetails extends AppCompatActivity {
 
 //    Declare impostors
 
-
-
-
     ImageView rest_img;
     TextView rest_desc, rest_name;
     TextView bookingURL;
     Button btnbook, review, viewreview;
     DatabaseReference dbref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,8 +60,6 @@ public class RestaurantDetails extends AppCompatActivity {
 
         Restaurant rest = i.getParcelableExtra("Restaurant");
         dbref = FirebaseDatabase.getInstance().getReference("Restaurants");
-
-
 
 
 
